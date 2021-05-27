@@ -15,7 +15,6 @@ export class App extends Component{
              <Header/>
 
                 <Section/>
-                <div> hello</div>
 
              <Footer/>
          </Router>
