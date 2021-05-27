@@ -3,6 +3,7 @@ import { isEmail } from 'validator';
 import '../css/Contactus.css'
 
 
+
 export class Contactus extends Component{
 
     constructor(props) {
@@ -44,7 +45,7 @@ export class Contactus extends Component{
 
         if (data.name=== '') errors.name = 'Enter Your Name!!';
         if (!isEmail(data.email)) errors.email = 'Enter a Valid Email Address!!!';
-        if (data.email=== '') errors.email = "enter Your Email!!!";
+        if (data.email=== '') errors.email = "Enter Your Email!!!";
         if (data.subject==='') errors.subject = "Enter a Subject!!!";
         if (data.message==='') errors.message ="Enter a message!!!!!";
 
@@ -131,7 +132,7 @@ export class Contactus extends Component{
                     <div className="col-75">
                         <input type="text" id="nname" value={data.name} invalid={errors.name ? true : false}
                                name="name" placeholder="Your name.." onChange={this.handleChange}/>
-                        {errors.name}
+                        <div className="errormsg">  {errors.name} </div>
                     </div>
                 </div>
 
@@ -142,7 +143,7 @@ export class Contactus extends Component{
                     <div className="col-75">
                         <input type="email" id="eemail" value={data.email} invalid={errors.email ? true : false}
                                name="email" placeholder="Your Email.." onChange={this.handleChange}/>
-                        {errors.email}
+                <div className="errormsg">   {errors.email} </div>
                     </div>
                 </div>
 
@@ -153,7 +154,7 @@ export class Contactus extends Component{
                     <div className="col-75">
                         <input type="text" id="ssub" value={data.subject} invalid={errors.subject ? true : false}
                                name="subject" placeholder="Enter a Subject.." onChange={this.handleChange}/>
-                        {errors.subject}
+                      <div className="errormsg">  {errors.subject} </div>
                     </div>
                 </div>
 
@@ -165,7 +166,7 @@ export class Contactus extends Component{
                         <textarea id="mssg" value={data.message} invalid={errors.message ? true:false}
                                   name="message" placeholder="Write something.." onChange={this.handleChange}
                                   style={{height:'200px'}}> </textarea>
-                        {errors.message}
+                     <div className="errormsg">  {errors.message} </div>
                     </div>
                 </div>
                 <div className="row">
