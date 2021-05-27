@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Route} from 'react-router-dom';
+import ContactUs from './pages/Contactus'
 
 export class Section extends Component{
 
@@ -6,7 +8,13 @@ export class Section extends Component{
 
         return(
 
-            <></>
+            <section>
+                <Route path="/" component={ContactUs} exact />
+
+
+
+
+            </section>
         )
     }
 }
