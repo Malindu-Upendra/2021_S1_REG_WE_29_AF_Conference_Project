@@ -111,6 +111,10 @@ input[type=submit] {
 /*    padding: 20px;*/
 /*}*/
 
+.errormsg{
+    color: red;
+}
+
 /* Floating column for labels: 25% width */
 .col-25 {
     float: left;
