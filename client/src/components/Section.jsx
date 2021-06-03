@@ -10,6 +10,7 @@ export class Section extends Component{
 
             <section>
                 <Route path="/" component={ContactUs} exact />
+                <Route path="/" component={ContactUs} exact />
 
 
 
