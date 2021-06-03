@@ -37,7 +37,7 @@ export  class Header extends Component{
 
 
                     <li><Link to="/"> Download Templates </Link></li>
-                    <li><Link to="/"> Workshop </Link></li>
+                    <li><Link to="/nav"> Workshop </Link></li>
 
 
 
