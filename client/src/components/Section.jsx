@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 import ContactUs from './pages/ContactUs/Contactus'
 // import Navbar from '../components/pages/Admin/Navbar'
-
 export class Section extends Component{
 
     render() {
