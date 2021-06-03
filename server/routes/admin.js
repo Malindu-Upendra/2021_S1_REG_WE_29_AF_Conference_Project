@@ -61,19 +61,4 @@ router.put('/updateConference/:id',async(req,res)=>{
     }
 })
 
-router.post('/uploadDetails',async (req,res)=>{
-    const body = req.body;
-    console.log(body);
-
-    const uploadDetails = new Conference(body);
-    try{
-
-        await uploadDetails.save()
-        res.json({success:true})
-
-    }catch (e) {
-        console.log(e)
-    }
-})
-
 export default router;
