@@ -21,16 +21,14 @@ export class App extends Component{
              <Header/>
                 <Section/>
              <Footer/>
-
         </>
                  : null}
 
-//to get the admin section
+
              { this.state.Admin==='admin'  ?
                  <>
                      <AdminSection/>
                  </>
-
                  : null}
 
          </Router>
