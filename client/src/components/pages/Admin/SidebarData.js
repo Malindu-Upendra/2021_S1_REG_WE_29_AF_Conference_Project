@@ -11,8 +11,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Reports',
-        path: '/insert',
+        title: 'Contact US',
+        path: '/',
         cName: 'nav-text'
     },
     {

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import {render} from "react-dom";
 import {BrowserRouter as Router} from 'react-router-dom'
 import Header from "./components/pages/Header/Header";
 import Footer from "./components/pages/Footer/Footer";
 import Section from "./components/Section";
-import AdminSection from "./components/AdminSection";
+import Navbar from "./components/pages/Admin/Navbar";
 
 export class App extends Component{
     state={
-        user:'user',
+        user:'',
         Admin:'admin'
     }
 
@@ -18,16 +17,17 @@ export class App extends Component{
          <Router>
              { this.state.user==='user'  ?
                  <>
-             <Header/>
-                <Section/>
-             <Footer/>
-        </>
+                     <Header/>
+                     <Section/>
+                     <Footer/>
+                </>
                  : null}
 
 
              { this.state.Admin==='admin'  ?
                  <>
-                     <AdminSection/>
+                     <Navbar/>
+                     <Section/>
                  </>
                  : null}
 
