@@ -1,6 +1,6 @@
 import react, {Component} from 'react'
 import { isEmail } from 'validator';
-import '../css/Contactus.css'
+import '../../css/Contactus.css'
 
 
 

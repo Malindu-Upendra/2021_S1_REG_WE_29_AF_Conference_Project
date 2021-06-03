@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
-import ContactUs from './pages/Contactus'
+import ContactUs from './pages/ContactUs/Contactus'
 
 export class Section extends Component{
 

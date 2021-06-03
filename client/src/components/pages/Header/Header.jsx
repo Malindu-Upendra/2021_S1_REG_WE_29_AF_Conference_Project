@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
-import './css/Header.css'
-import Menu from './svg/bars-solid.svg'
-import Close from './svg/times-solid.svg'
+import '../../css/Header.css'
+import Menu from '../../svg/bars-solid.svg'
+import Close from '../../svg/times-solid.svg'
 
 export  class Header extends Component{
 

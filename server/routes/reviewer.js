@@ -3,11 +3,46 @@ const router = express.Router();
 import researchPaper from "../model/researchPaper.js";
 import Workshop from "../model/workshop.js";
 
+router.get('/uploadedResearchPapers',async (req,res)=>{
+
+    try {
+        const researchPapers = await researchPaper.find();
+        res.status(200).json(researchPapers);
+    }catch (err) {
+        res.status(404).json({message: err.message});
+    }
+
+})
+
+router.get('/uploadedWorkshops',async (req,res)=>{
+
+    try {
+        const workShops = await Workshop.find();
+        res.status(200).json(workShops);
+    }catch (err) {
+        res.status(404).json({message: err.message});
+    }
+
+})
+
 router.put('/approveResearch/:id',async (req,res) => {
     const id = req.params.id;
 
     try {
         await researchPaper.findByIdAndUpdate({id},{ approval : 'Approved'})
+
+        res.send({success:'true',message:"Successfully updated"});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
+
+router.put('/declineResearch/:id',async (req,res) => {
+    const id = req.params.id;
+
+    try {
+        await researchPaper.findByIdAndUpdate({id},{ approval : 'Declined'})
 
         res.send({success:'true',message:"Successfully updated"});
     }catch (e) {
@@ -30,11 +65,24 @@ router.post('/uploadResearch/new',async (req,res) => {
 
 })
 
-router.put('/approveWorkShop',async (req,res) => {
+router.put('/approveWorkShop/:id',async (req,res) => {
     const id = req.params.id;
 
     try {
         Workshop.findByIdAndUpdate({id},{ approval : 'Approved'});
+
+        res.send({success:'true',message:"Successfully updated"});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
+
+router.put('/declineWorkShop/:id',async (req,res) => {
+    const id = req.params.id;
+
+    try {
+        Workshop.findByIdAndUpdate({id},{ approval : 'Declined'});
 
         res.send({success:'true',message:"Successfully updated"});
     }catch (e) {
