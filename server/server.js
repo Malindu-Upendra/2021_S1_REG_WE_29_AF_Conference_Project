@@ -23,7 +23,7 @@ catch((err) => console.log(err.message));
 mongoose.set('useFindAndModify',false);
 
 //declaring path to use Rest Services
-app.use('/admin',admin)
+app.use('/admin',admin);
 app.use('/user', user);
 app.use('/editor', editor);
 app.use('/reviewer', reviewer);
