@@ -3,6 +3,9 @@ import Conference from '../model/conference.js';
 import Attendee from "../model/attendee.js";
 import Workshop from "../model/workshop.js";
 import ResearchPaper from "../model/researchPaper.js";
+import UserModal from "../model/user.js";
+import jwt from "jsonwebtoken";
+import * as Console from "console";
 const router = express.Router();
 
 router.get('/conferenceDetails',async (req,res)=>{
@@ -60,5 +63,35 @@ router.put('/updateConference/:id',async(req,res)=>{
         res.status(404).json({message: e.message});
     }
 })
+
+
+const secret = 'test';
+
+router.post('/login',async (req, res) => {
+    const d = req.body;
+    const user = new UserModal(d)
+
+    Console.log("from routes 1 " + user);
+    const email = user.email;
+    const password = user.password;
+
+    try {
+        const oldUser = await UserModal.findOne({ email });
+        Console.log("from routes 2 " + oldUser);
+
+        if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
+
+        if(password !== oldUser.password) {
+            console.log("from routes 3 Invalid credentials")
+            return res.status(400).json({message: "Invalid credentials"});
+        }
+        const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
+
+        res.status(200).json({oldUser, token , success:true});
+    } catch (err) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+
+});
 
 export default router;

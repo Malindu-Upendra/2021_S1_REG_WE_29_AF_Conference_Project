@@ -4,6 +4,20 @@ import workshop from "../model/workshop.js";
 import researchPaper from "../model/researchPaper.js";
 import Attendee from "../model/attendee.js";
 import Payment from "../model/payment.js";
+import contactus from "../model/contactUs.js";
+
+router.post('/ContactUs',async (req,res) => {
+    const p = req.body;
+
+    const info = new contactus(p);
+    try {
+        await info.save();
+        res.send({success:'true',message:"Successfully Inserted"});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
 
 router.post('/uploadResearch',async (req,res) => {
     const p = req.body;
