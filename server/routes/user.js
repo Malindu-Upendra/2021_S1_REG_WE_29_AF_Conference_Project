@@ -5,6 +5,7 @@ import researchPaper from "../model/researchPaper.js";
 import Attendee from "../model/attendee.js";
 import Payment from "../model/payment.js";
 import contactus from "../model/contactUs.js";
+import nodemailer from "nodemailer";
 
 router.post('/ContactUs',async (req,res) => {
     const p = req.body;
@@ -62,6 +63,30 @@ router.post('/attendee',async (req,res)=>{
     })
 
     await paid.save()
+
+    let transporter = nodemailer.createTransport({
+
+        service:'gmail',
+        auth: {
+            user: 'sliit.conference2021@gmail.com',
+            pass: '1m2a3l4i5n6d7u'
+        }
+    });
+
+    let mailOptions = {
+        from: 'sliit.conference2021@gmail.com',
+        to: details.email,
+        subject: 'Registering for SLIIT Conference',
+        text: 'Thank you pakaya :D'
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
 
     res.send({success:true})
 

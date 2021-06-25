@@ -1,8 +1,7 @@
 import react, {Component} from 'react'
 import { isEmail } from 'validator';
 import '../../css/Contactus.css'
-
-
+import axios from "axios";
 
 export class Contactus extends Component{
 
@@ -21,8 +20,14 @@ export class Contactus extends Component{
             message:""
 
         },
+        user:JSON.parse(localStorage.getItem('profile')),
         errors:{}
 });
+
+    componentDidMount() {
+        this.setState({user:JSON.parse(localStorage.getItem('profile'))})
+
+    }
 
     handleChange = (e) => {
         this.setState({
@@ -56,7 +61,8 @@ export class Contactus extends Component{
     handleSubmit = (e) => {
 
         e.preventDefault();
-        const { data } =this.state;
+        console.log(this.state.data);
+        const { data } = this.state;
         const errors = this.validate();
 
         if (Object.keys(errors).length === 0){
@@ -69,6 +75,16 @@ export class Contactus extends Component{
 
             this.setState({ errors });
         }
+
+        axios.post('http://localhost:5000/user/ContactUs',this.state.data)
+            .then(response => {
+                if (response.data.success) {
+                    window.location = '/'
+                } else {
+                    alert('Failed to insert')
+                }
+            })
+            .catch(err => console.log(err));
 
     }
 

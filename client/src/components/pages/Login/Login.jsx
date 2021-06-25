@@ -38,7 +38,7 @@ const Login = () => {
                     console.log(response.data);
                     const data = response.data;
                     console.log(data);
-                    dispatch({ type: AUTH, data:data });
+                    dispatch({ type: AUTH, data });
                     window.location = '/contactUs'
                 } else {
                     alert('Failed to login')

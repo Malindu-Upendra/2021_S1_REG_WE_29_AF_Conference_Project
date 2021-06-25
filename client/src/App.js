@@ -4,16 +4,15 @@ import Header from "./components/pages/Header/Header";
 import Footer from "./components/pages/Footer/Footer";
 import Section from "./components/Section";
 import Navbar from "./components/pages/Admin/Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class App extends Component{
     state={
-        user:'',
-        Admin:'admin'
+        user:'user',
     }
 
     render(){
         return(
-
          <Router>
              { this.state.user==='user'  ?
                  <>
@@ -22,18 +21,14 @@ export class App extends Component{
                      <Footer/>
                 </>
                  : null}
-
-
-             { this.state.Admin==='admin'  ?
+             { this.state.user==='admin'  ?
                  <>
                      <Navbar/>
                      <Section/>
                  </>
                  : null}
-
          </Router>
         )
-
     }
 }
 

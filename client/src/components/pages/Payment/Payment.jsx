@@ -1,32 +1,19 @@
-import React , {Component} from "react";
-//import '../css/paypall.css'
-//import PayPal from "./PayPal";
+import React, {useEffect, useState} from "react";
+import './css/paypal.css';
+import PayPal from "./PayPal/Paypal.jsx";
 
-export class Pay extends Component{
+export default function Pay(props){
 
-    state = {
-        user: []
-    }
+    const [details , setDetails] = useState(props);
 
-    componentDidMount = () => {
-        //const details = this.props.match.params.user;
-        const details = this.props.location.data;
-        console.log(details)
-        this.setState({details})
-        console.log(this.state.user)
-    }
-
-    render() {
         return (
-            /*<div className="pay">
-                <PayPal
-                    email={this.state.email}
-                    toPay={this.state.total}/>
-
-            </div>*/
-            <h2>{this.state.user}</h2>
+            <div className="pay">
+                 <PayPal
+                     email={details.email}
+                     name={details.name}
+                     phoneNumber={details.phoneNumber}
+                     amount={details.amount}/>
+            </div>
         );
-    }
-}
 
-export default Pay;
+}

@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Attendee from "./Attendee/regformAlign.jsx";
+import Attendee from "./Attendee/Attendee.jsx";
 
 class RegistrationPage extends Component{
 
@@ -20,29 +20,29 @@ class RegistrationPage extends Component{
 
     render() {
         return (
-            <>
-                <h2>Please Select Your Category</h2>
+            <div className="container" style={{marginTop:'50px' , marginBottom:'50px'}}>
+                <h2 style={{backgroundColor:'#ff944d' , borderRadius:'5px', padding:'2px'}}>Please Select Your Category</h2>
             <div className="radio-buttons">
                 Normal Attendee
                 <input
-                    id="windows"
+                    id="Attendee"
                     value="Attendee"
                     name="decision"
                     type="radio"
                     onChange={this.handleChange}
                     checked={this.state.decision ==='Attendee'}
                 />
-                {"       "}Researcher
+                {" "}Researcher
                 <input
-                    id="mac"
+                    id="Researcher"
                     value="Researcher"
                     name="decision"
                     type="radio"
                     onChange={this.handleChange}
                 />
-                {"       "}WorkShop Conductor
+                {" "}WorkShop Conductor
                 <input
-                    id="linux"
+                    id="Conductor"
                     value="WorkShop Conductor"
                     name="decision"
                     type="radio"
@@ -54,12 +54,11 @@ class RegistrationPage extends Component{
                 { this.state.decision==='WorkShop Conductor'  ? <h2>details of the { this.state.decision}</h2> : null }
                 { this.state.decision==='Attendee'  ?
                     <>
-                        <h2>details of the { this.state.decision}</h2>
                         <Attendee />
                     </>
 
                     : null }
-            </>
+            </div>
         );
     }
 

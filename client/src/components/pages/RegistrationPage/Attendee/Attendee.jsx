@@ -1,120 +1,83 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { isEmail } from 'validator';
-import {Link} from "react-router-dom";
+import {Button, Form, Modal} from "react-bootstrap";
+import '../css/Attendee.css'
+import Payment from '../../Payment/Payment.jsx'
 
 class Register extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = this.getInitialState();
+    state = {
+        fname:'',
+        email:'',
+        phoneNumber:0,
+        amount:10,
+        openModal:''
     }
 
-    getInitialState = () => ({
-        data: {
-            Name: '',
-            email: '',
-            phoneNumber: ''
-        },
-        errors: {}
-    });
+    componentDidMount() {
+        this.setState({openModal:false})
+    }
+
+    ModalOn = (e) => {
+        e.preventDefault();
+        this.setState({openModal:true})
+
+    }
+
+    ModalOff = () => {
+        this.setState({openModal:false})
+    }
 
     handleChange = (e) => {
-        this.setState({
-            data: {
-                ...this.state.data,
-                [e.target.name]: e.target.value
-            },
-            errors: {
-                ...this.state.errors,
-                [e.target.name]: ''
-            }
-        });
-    }
-
-    validate = (evt) => {
-        const { data } = this.state;
-        let errors = {};
-
-        if (data.Name === '') errors.Name = 'Enter Your Name!!!';
-        if (!isEmail(data.email)) errors.email = 'Enter a Valid Email Address!!!';
-        //if (data.phoneNumber === '') errors.phoneNumber = 'Enter Your Phone Number!!!';
-
-        const rx_live = /^[+-]?\d*(?:[.,]\d*)?$/;
-
-        if (!rx_live.test(data.phoneNumber))
-        {
-            errors.phoneNumber = 'Enter Your Phone Number!!!'
-        }
-        else if(data.phoneNumber.length < 10)
-        {
-            errors.phoneNumber = 'Enter valid Phone Number!!!'
-        }
-
-        return errors;
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-
-        const { data } = this.state;
-
-        const errors = this.validate();
-
-        if (Object.keys(errors).length === 0) {
-            console.log(data);
-
-            this.setState(this.getInitialState());
-            //window.location = `/payment/${data}`
-        } else {
-            this.setState({ errors });
-        }
-
+        const {name , value} = e.target;
+        this.setState({[name]:value});
     }
 
     render() {
-        const { data, errors } = this.state;
-        return (
-            <div>    <br></br>
-                <div className="container">
-                    <Form onSubmit={this.handleSubmit}>
-                        <FormGroup>
-                            <Label for="firstName">Name</Label>
-                            <Input id="firstName" value={data.Name} invalid={errors.Name ? true : false} name="Name" placeholder="Enter Your Name" onChange={this.handleChange} />
-                            <FormFeedback style={{color:'red'}}>{errors.Name}</FormFeedback>
-                        </FormGroup>
-                        <br></br>
-
-                        <FormGroup>
-                            <Label for="email">Email</Label>
-                            <Input id="email" value={data.email} invalid={errors.email ? true : false} name="email"  placeholder="Enter Your Email ID" onChange={this.handleChange} />
-                            <FormFeedback style={{color:'red'}}>{errors.email}</FormFeedback>
-                        </FormGroup>
-
-                        <br></br>
-                        <FormGroup>
-                            <Label for="lastName">Phone Number</Label>
-                            <Input id="lastName" maxLength={10} value={data.phoneNumber} invalid={errors.phoneNumber ? true : false} name="phoneNumber"  placeholder="Enter Your Phone Number" onChange={this.handleChange} />
-                            <FormFeedback style={{color:'red'}}>{errors.phoneNumber}</FormFeedback>
-                        </FormGroup>
-
-                        <br></br>
-
-                        <Link
-                            to={{
-                                pathname: "/payment",
-                                data: this.state.data // your data array of objects
-                            }}
-                        ><Button type="submit" outline color="success">Register</Button></Link>
-                        <br></br> <br></br>
-                    </Form>
+        return(
+            <div className='container' style={{marginTop:'50px' , marginBottom:'100px' }}>
+                <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of the Attendee</h2></div>
+            <Form>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Full Name</Form.Label>
+                    <Form.Control type="text" name="fname" onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                     <Form.Label>Phone Number</Form.Label>
+                    <Form.Control type="number" name="phoneNumber" onChange={this.handleChange} />
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={this.ModalOn} style={{width:'100%'}}>
+                    Register
+                </Button>
+            </Form>
+                <div>
+                    <Modal
+                        show={this.state.openModal}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                    >
+                        <Modal.Body>
+                            <h4>Payment Method</h4>
+                            <Payment
+                                email={this.state.email}
+                                name={this.state.fname}
+                                phoneNumber={this.state.phoneNumber}
+                                amount={this.state.amount}/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" type="submit" onClick={this.ModalOff}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
-
-                <br></br>
             </div>
-
-        );
+        )
     }
+
 }
 
 export default Register;
