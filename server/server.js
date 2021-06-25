@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 const connect_URI = 'mongodb+srv://C5MLGBSbHGMv1Xau:Rsp9GPKZMKgbjfPo@cluster0.r7ueu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(connect_URI,{useNewUrlParser:true, useUnifiedTopology:true ,useCreateIndex:true}).
-then(() => app.listen(PORT,() => console.log(`connection stablished successfully on port: ${PORT}`))).
+then(() => app.listen(PORT,() => console.log(`connection Established successfully on port: ${PORT}`))).
 catch((err) => console.log(err.message));
 
 mongoose.set('useFindAndModify',false);

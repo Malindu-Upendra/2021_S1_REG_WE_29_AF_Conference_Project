@@ -5,6 +5,7 @@ import Header from "./components/pages/Header/Header";
 import Footer from "./components/pages/Footer/Footer";
 import Section from "./components/Section";
 import AdminSection from "./components/AdminSection";
+import Navbar from "./components/pages/Admin/Navbar";
 
 export class App extends Component{
     state={
@@ -27,7 +28,10 @@ export class App extends Component{
 
              { this.state.Admin==='admin'  ?
                  <>
+
                      <AdminSection/>
+
+
                  </>
                  : null}
 

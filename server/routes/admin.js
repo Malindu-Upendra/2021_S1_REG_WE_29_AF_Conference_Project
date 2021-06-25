@@ -5,6 +5,7 @@ import Workshop from "../model/workshop.js";
 import ResearchPaper from "../model/researchPaper.js";
 const router = express.Router();
 
+//Retrieve
 router.get('/conferenceDetails',async (req,res)=>{
 
     try {
