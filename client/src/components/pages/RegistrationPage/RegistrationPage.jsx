@@ -1,12 +1,14 @@
 import { Component } from "react";
 import Attendee from "./Attendee/Attendee.jsx";
+import Researcher from "./Researcher/Researcher.jsx";
+import WConductor from "./WConductor/WConductor.jsx";
 
 class RegistrationPage extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            decision:'Attendee'
+            decision:'WorkShop Conductor'
         };
     }
 
@@ -50,8 +52,17 @@ class RegistrationPage extends Component{
                 />
             </div>
 
-                { this.state.decision==='Researcher'  ? <h2>details of the { this.state.decision}</h2> : null }
-                { this.state.decision==='WorkShop Conductor'  ? <h2>details of the { this.state.decision}</h2> : null }
+                { this.state.decision==='Researcher'  ?
+                    <>
+                        <Researcher/>
+                    </>
+
+                    : null }
+                { this.state.decision==='WorkShop Conductor'  ?
+                    <>
+                        <WConductor />
+                    </>
+                    : null }
                 { this.state.decision==='Attendee'  ?
                     <>
                         <Attendee />

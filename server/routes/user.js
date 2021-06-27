@@ -6,6 +6,34 @@ import Attendee from "../model/attendee.js";
 import Payment from "../model/payment.js";
 import contactus from "../model/contactUs.js";
 import nodemailer from "nodemailer";
+import cloudinary from '../utils/cloudinary.js'
+import upload from '../utils/multer.js'
+import sample from "../model/sample.js";
+
+//------------------------------------
+//sample checking cloudinary
+
+router.post("/sample", upload.single("image"), async (req, res) => {
+    try {
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path);
+
+        // Create new user
+        let user = new sample({
+            name: req.body.name,
+            avatar: result.secure_url,
+            cloudinary_id: result.public_id,
+        });
+        // Save user
+        await user.save();
+        res.json(user);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+//------------------------------------
+
 
 router.post('/ContactUs',async (req,res) => {
     const p = req.body;
@@ -19,6 +47,7 @@ router.post('/ContactUs',async (req,res) => {
     }
 
 })
+
 
 router.post('/uploadResearch',async (req,res) => {
     const p = req.body;

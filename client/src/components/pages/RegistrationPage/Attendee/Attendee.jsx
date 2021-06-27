@@ -35,7 +35,7 @@ class Register extends Component {
 
     render() {
         return(
-            <div className='container' style={{marginTop:'50px' , marginBottom:'100px' }}>
+            <div className='container' style={{marginTop:'50px' , marginBottom:'50px' }}>
                 <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of the Attendee</h2></div>
             <Form>
                 <Form.Group controlId="formBasicEmail">
