@@ -11,11 +11,13 @@ export class ViewWorkShop extends Component{
         workshops:[]
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        console.log("workshops 1")
+
         axios.get('http://localhost:5000/reviewer/uploadedWorkshops').
         then(res => {
             const  workshops = res.data;
-            //console.log( workshops);
+            console.log( "workshops" + workshops);
             this.setState({ workshops: workshops});
         }).catch(err => err.message)
     }

@@ -6,11 +6,9 @@ import admin from './routes/admin.js'
 import user from "./routes/user.js";
 import editor from "./routes/editor.js";
 import reviewer from "./routes/reviewer.js";
-import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 
 const app = express();
-app.use(fileUpload);
 app.use(cors());
 app.use(bodyparser.json({limit: "20mb", extended: true}));
 app.use(bodyparser.urlencoded({limit: "20mb", extended: true}));
