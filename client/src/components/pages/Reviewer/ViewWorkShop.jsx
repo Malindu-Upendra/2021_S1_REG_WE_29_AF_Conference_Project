@@ -1,6 +1,6 @@
 import {Component} from "react";
 import axios from "axios";
-import {Table} from "react-bootstrap";
+import {Button, Table} from "react-bootstrap";
 
 
 export class ViewWorkShop extends Component{
@@ -18,6 +18,26 @@ export class ViewWorkShop extends Component{
             //console.log( workshops);
             this.setState({ workshops: workshops});
         }).catch(err => err.message)
+    }
+
+    DeclineWorkshop = (id) => {
+        axios.put(`http://localhost:5000/reviewer/declineWorkShop/${id}`).
+        then(res =>{
+            if(res.data.success){
+                alert(res.data.message);
+                window.location.reload(false);
+            }
+        })
+    }
+
+    ApproveWorkshop = (id) => {
+        axios.put(`http://localhost:5000/reviewer/approveWorkShop/${id}`).
+        then(res =>{
+            if(res.data.success){
+                alert(res.data.message);
+                window.location.reload(false);
+            }
+        })
     }
 
     render() {
@@ -46,8 +66,32 @@ export class ViewWorkShop extends Component{
                                 <td>{workshops.description}</td>
                                 <td>{workshops. wconductors}</td>
                                 <td>{workshops.flyer}</td>
-                                <td>{workshops.approval}</td>
+                                <td>
+                                    { workshops.approval==='Not Approved' ?
+                                        <>
+                                        <h6 style={{backgroundColor:'yellow' , padding:'9px', color:'black', borderRadius:'3px'}}>  Pending</h6>
+                                        <Button variant="outline-success" onClick={this.ApproveWorkshop.bind(this,workshops._id)}>Approve</Button>{' '}
+                                            <p></p>
+                                        <Button variant="outline-danger" onClick={this.DeclineWorkshop.bind(this,workshops._id)}>Reject</Button>{' '}
+                                        </>
+                                        : null }
 
+                                    { workshops.approval==='Approved' ?
+                                        <>
+                                            <h6 style={{backgroundColor:'green' , padding:'9px', color:'black', borderRadius:'3px'}}>  Approved</h6>
+                                            <p></p>
+                                            <Button variant="outline-danger" onClick={this.DeclineWorkshop.bind(this,workshops._id)}>Reject</Button>{' '}
+                                        </>
+                                        : null }
+
+                                    { workshops.approval==='Declined' ?
+                                        <>
+                                            <h6 style={{backgroundColor:'red' , padding:'9px', color:'black', borderRadius:'3px'}}>  Rejected</h6>
+                                            <p></p>
+                                            <Button variant="outline-success" onClick={this.ApproveWorkshop.bind(this,workshops._id)}>Approve</Button>{' '}
+                                        </>
+                                        : null }
+                                </td>
                             </tr>
                         ))}
                         </tbody>

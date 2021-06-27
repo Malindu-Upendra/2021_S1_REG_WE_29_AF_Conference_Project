@@ -29,9 +29,9 @@ router.put('/approveResearch/:id',async (req,res) => {
     const id = req.params.id;
 
     try {
-        await researchPaper.findByIdAndUpdate({id},{ approval : 'Approved'})
+        await researchPaper.findByIdAndUpdate({_id:id},{ approval : 'Approved'})
 
-        res.send({success:'true',message:"Successfully updated"});
+        res.send({success:'true',message:"Successfully Research paper updated"});
     }catch (e) {
         console.log(e);
     }
@@ -42,9 +42,9 @@ router.put('/declineResearch/:id',async (req,res) => {
     const id = req.params.id;
 
     try {
-        await researchPaper.findByIdAndUpdate({id},{ approval : 'Declined'})
+        await researchPaper.findByIdAndUpdate({_id:id},{ approval : 'Declined'})
 
-        res.send({success:'true',message:"Successfully updated"});
+        res.send({success:'true',message:"Successfully Research paper updated"});
     }catch (e) {
         console.log(e);
     }
@@ -67,11 +67,11 @@ router.post('/uploadResearch/new',async (req,res) => {
 
 router.put('/approveWorkShop/:id',async (req,res) => {
     const id = req.params.id;
-
+    console.log(id)
     try {
-        Workshop.findByIdAndUpdate({id},{ approval : 'Approved'});
+      await  Workshop.findByIdAndUpdate({_id:id},{ approval : 'Approved'});
 
-        res.send({success:'true',message:"Successfully updated"});
+        res.send({success:'true',message:"Successfully WorkShop updated"});
     }catch (e) {
         console.log(e);
     }
@@ -82,9 +82,9 @@ router.put('/declineWorkShop/:id',async (req,res) => {
     const id = req.params.id;
 
     try {
-        Workshop.findByIdAndUpdate({id},{ approval : 'Declined'});
+     await Workshop.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
 
-        res.send({success:'true',message:"Successfully updated"});
+        res.send({success:'true',message:"Successfully WorkShop updated"});
     }catch (e) {
         console.log(e);
     }
