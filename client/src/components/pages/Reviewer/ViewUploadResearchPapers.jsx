@@ -1,6 +1,6 @@
 import {Component} from "react";
 import axios from "axios";
-import {Table} from "react-bootstrap";
+import {Button, Table} from "react-bootstrap";
 
 
 export class ViewUploadResearchPapers extends Component{
@@ -20,6 +20,25 @@ export class ViewUploadResearchPapers extends Component{
         }).catch(err => err.message)
     }
 
+    DeclineResearchPapers = (id) => {
+        axios.put(`http://localhost:5000/reviewer/declineResearch/${id}`).
+        then(res =>{
+            if(res.data.success){
+                alert(res.data.message);
+                window.location.reload(false);
+            }
+        })
+    }
+
+    ApproveResearchPapers = (id) => {
+        axios.put(`http://localhost:5000/reviewer/approveResearch/${id}`).
+        then(res =>{
+            if(res.data.success){
+                alert(res.data.message);
+                window.location.reload(false);
+            }
+        })
+    }
 
     render() {
 
@@ -49,7 +68,32 @@ export class ViewUploadResearchPapers extends Component{
                         <td>{ResearchPapers.email}</td>
                         <td>{ResearchPapers.phoneNumber}</td>
                         <td>{ResearchPapers.paper}</td>
-                        <td>{ResearchPapers.approval}</td>
+                        <td>
+                             { ResearchPapers.approval==='Not Approved' ?
+                                 <>
+                                <h6 style={{backgroundColor:'yellow' , padding:'9px', color:'black', borderRadius:'3px'}}>  Pending</h6>
+                                <Button variant="outline-success" onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>Approve</Button>{' '}
+                                <p></p>
+                                <Button variant="outline-danger" onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>Reject</Button>{' '}
+                            </>
+                            : null }
+
+                            { ResearchPapers.approval==='Approved' ?
+                                <>
+                                    <h6 style={{backgroundColor:'green' , padding:'9px', color:'black', borderRadius:'3px'}}>  Approved</h6>
+                                    <p></p>
+                                    <Button variant="outline-danger" onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>Reject</Button>{' '}
+                                </>
+                                : null }
+
+                            { ResearchPapers.approval==='Declined' ?
+                                <>
+                                    <h6 style={{backgroundColor:'red' , padding:'9px', color:'black', borderRadius:'3px'}}>  Rejected</h6>
+                                    <p></p>
+                                    <Button variant="outline-success" onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>Approve</Button>{' '}
+                                </>
+                                : null }
+                        </td>
                     </tr>
                             ))}
                     </tbody>
