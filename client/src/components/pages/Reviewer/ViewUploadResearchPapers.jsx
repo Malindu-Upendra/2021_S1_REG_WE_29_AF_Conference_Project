@@ -15,7 +15,7 @@ export class ViewUploadResearchPapers extends Component{
         axios.get('http://localhost:5000/reviewer/uploadedResearchPapers').
         then(res => {
             const  ResearchPapers = res.data;
-            //console.log( ResearchPapers);
+            console.log( ResearchPapers);
             this.setState({ ResearchPaper: ResearchPapers});
         }).catch(err => err.message)
     }

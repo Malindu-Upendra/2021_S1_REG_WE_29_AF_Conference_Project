@@ -15,7 +15,7 @@ export class ViewWorkShop extends Component{
         axios.get('http://localhost:5000/reviewer/uploadedWorkshops').
         then(res => {
             const  workshops = res.data;
-            //console.log( workshops);
+            console.log( workshops);
             this.setState({ workshops: workshops});
         }).catch(err => err.message)
     }
@@ -42,9 +42,7 @@ export class ViewWorkShop extends Component{
 
     render() {
         return(
-
             <div>
-
                 <div style={{paddingTop:'50px'}}></div>
                 <div className='container' style={{paddingTop:'40px', paddingBottom:'30px'}}>
                     <Table striped bordered hover variant="dark">
