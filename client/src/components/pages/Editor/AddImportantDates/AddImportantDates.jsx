@@ -1,9 +1,7 @@
 import {Component} from "react";
 import Card from 'react-bootstrap/Card'
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {TextField} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Icon from '@material-ui/core/Icon';
 
 
 export class AddImportantDates extends Component{
@@ -36,14 +34,9 @@ export class AddImportantDates extends Component{
 
                         </Form.Group>
 
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            type={"submit"}
-                            startIcon={<Icon className="fa fa-plus-circle" />}
-                        >
-                            Add Date
+                        <Button variant="primary" type="submit">
+                            <i className="fas fa-plus-circle"></i> {}
+                            Add Important Date
                         </Button>
                     </Form>
 
