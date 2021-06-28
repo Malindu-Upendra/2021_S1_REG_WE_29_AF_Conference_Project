@@ -3,20 +3,6 @@ import tempConferenceDetails from "../model/tempConferenceDetails.js";
 import Keynotes from "../model/keynotes.js";
 const router = express.Router();
 
-router.post('/uploadConDetails',async (req,res) => {
-    const p = req.body;
-
-    const newConDetails = new tempConferenceDetails(p);
-    try {
-        await newConDetails.save();
-
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
-        console.log(e);
-    }
-
-})
-
 router.get('/',async (req,res) =>{
 
     try {
@@ -54,5 +40,27 @@ router.post('/keynotes',async (req,res)=>{
     }
 
 })
+
+// router.post('/addConferenceTracksForm',async (req,res)=>{
+//
+//     const body =req.body;
+//
+// })
+
+router.post('/uploadConDetails',async (req,res) => {
+    const p = req.body;
+
+    const newConDetails = new tempConferenceDetails(p);
+    try {
+        await newConDetails.save();
+
+        res.send({success:'true',message:"Successfully Inserted"});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
+
+
 
 export default router;
