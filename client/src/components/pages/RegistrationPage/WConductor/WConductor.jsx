@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Button, Form, Modal} from "react-bootstrap";
 import Payment from "../../Payment/Payment";
+import axios from "axios";
 
 export class WConductor extends Component{
 
@@ -8,7 +9,7 @@ export class WConductor extends Component{
         title:'',
         description:'',
         wconductors:'',
-        file:''
+        image:''
     }
 
     handleChange = (e) => {
@@ -17,8 +18,38 @@ export class WConductor extends Component{
     }
 
     handleImage = (e) => {
-        this.setState({file:e.target.files[0]})
-        console.log(this.state.file)
+        this.setState({image:e.target.files[0]})
+        console.log(this.state.image)
+    }
+
+    handleSubmit = async () => {
+
+        try {
+            let formData = new FormData();
+            formData.append("title", this.state.title);
+            formData.append("description", this.state.description);
+            formData.append("wconductors", this.state.wconductors);
+            formData.append("image", this.state.image);
+
+            // axios.post('http://localhost:5000/user/sample', formData).then(res => {
+            //     this.setState({title:'' , description:'' , wconductors:'' , file:''})
+            //     alert("Successfully added")
+            //     history.replace("/");
+            // })
+
+            const res = await fetch(`http://localhost:5000/user/sample`, {
+                method: "POST",
+                body: formData,
+            });
+            if (res.ok) {
+                this.setState({title:'' , description:'' , wconductors:'' , file:''})
+                alert("Successfully added")
+                history.replace("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     render() {
@@ -39,10 +70,10 @@ export class WConductor extends Component{
                         <Form.Control type="text" name="wconductors" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.File id="exampleFormControlFile1" name="file" label="Example file input" onChange={this.handleImage}/>
+                        <Form.File id="exampleFormControlFile1" name="image" label="Example file input" onChange={this.handleImage}/>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit"  style={{width:'100%'}}>
+                    <Button variant="primary" onClick={this.handleSubmit} style={{width:'100%'}}>
                         Submit
                     </Button>
                 </Form>
