@@ -7,7 +7,11 @@ const KeynotesSchema = Schema({
         type: String,
         required: true
     },
-    name: {
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
         type: String,
         required: true
     },
@@ -18,6 +22,9 @@ const KeynotesSchema = Schema({
     description:{
         type: String,
         required: true
+    },
+    speakerImg:{
+        type: String
     }
 });
 
