@@ -1,9 +1,8 @@
 import {Component} from "react";
 import Card from 'react-bootstrap/Card'
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {TextField} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Icon from '@material-ui/core/Icon';
+
 
 export class AddConferenceTracks extends Component{
 
@@ -36,13 +35,8 @@ export class AddConferenceTracks extends Component{
 
                         </Form.Group>
 
-                        <Button style={{ marginLeft: '25%'}}
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            type={"submit"}
-                            startIcon={<Icon className="fa fa-plus-circle" />}
-                        >
+                        <Button variant="primary" type="submit">
+                            <i className="fas fa-plus-circle"></i> {}
                             Add Conference Tracks
                         </Button>
                     </Form>
