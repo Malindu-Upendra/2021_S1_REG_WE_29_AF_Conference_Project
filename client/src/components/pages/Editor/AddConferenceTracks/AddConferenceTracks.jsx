@@ -14,16 +14,18 @@ export class AddConferenceTracks extends Component{
                 <Card.Body>
                     <Form>
 
-                        <Form.Group className="mb-3" controlId="ctitle">
+                        <Form.Group className="mb-3" style={{height:'50px'}} controlId="ctitle">
                             <TextField style={{ width: '100%' }}
                                        id="title"
                                        label="Heading"
                                        variant="outlined"
+                                       multiline
+                                       rows={1}
                             />
 
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="cdescription">
+                        <Form.Group className="mb-3" style={{marginTop:'40px'}} controlId="cdescription">
                             <TextField style={{ width: '100%' }}
                                        id="description"
                                        label="Description"
@@ -34,7 +36,7 @@ export class AddConferenceTracks extends Component{
 
                         </Form.Group>
 
-                        <Button style={{ marginLeft: '25%' }}
+                        <Button style={{ marginLeft: '25%'}}
                             variant="contained"
                             color="primary"
                             size="large"

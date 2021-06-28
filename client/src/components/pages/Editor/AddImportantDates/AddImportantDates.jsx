@@ -10,7 +10,7 @@ export class AddImportantDates extends Component{
 
     render() {
         return(
-            <Card style={{ width: '50%',marginLeft: '30%',marginTop: '5%',height :'300px',marginBottom: '5%' }}>
+            <Card style={{ width: '50%', Height:'500px' ,marginLeft: '30%',marginTop: '5%',marginBottom: '5%' }}>
                 <Card.Header className={"text-center"} as="h5">Add Important Dates</Card.Header>
                 <Card.Body>
                     <Form>
@@ -30,6 +30,8 @@ export class AddImportantDates extends Component{
                                        id="description"
                                        label="Description"
                                        variant="outlined"
+                                       multiline
+                                       rows={3}
                             />
 
                         </Form.Group>
