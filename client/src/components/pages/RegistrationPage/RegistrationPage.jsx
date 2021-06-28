@@ -8,7 +8,7 @@ class RegistrationPage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            decision:'WorkShop Conductor'
+            decision:'Attendee'
         };
     }
 

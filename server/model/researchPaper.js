@@ -24,6 +24,9 @@ const researchPaperSchema = Schema({
         type: String,
         required: true
     },
+    CloudinaryID:{
+        type: String
+    },
     approval:{
         type:String,
         default:'Not Approved'

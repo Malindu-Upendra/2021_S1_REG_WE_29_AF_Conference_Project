@@ -9,10 +9,8 @@ const nodemailer = require("nodemailer");
 const cloudinary = require('../utils/cloudinary.js');
 const upload = require('../utils/multer.js');
 
-//------------------------------------
-//sample checking cloudinary
 
-router.post("/sample", upload.single("image"), async (req, res) => {
+router.post("/uploadWorkShop", upload.single("image"), async (req, res) => {
     console.log("came to backend 1")
 
     try {
@@ -21,7 +19,6 @@ router.post("/sample", upload.single("image"), async (req, res) => {
         console.log(result);
         console.log("from method = ")
 
-        // Create new user
         let wk = new workshop({
             title: req.body.title,
             description: req.body.description,
@@ -37,9 +34,6 @@ router.post("/sample", upload.single("image"), async (req, res) => {
     }
 });
 
-//------------------------------------
-
-
 router.post('/ContactUs',async (req,res) => {
     const p = req.body;
 
@@ -54,30 +48,26 @@ router.post('/ContactUs',async (req,res) => {
 })
 
 
-router.post('/uploadResearch',async (req,res) => {
-    const p = req.body;
-
-    const newPaper = new researchPaper(p);
+router.post('/uploadResearch',upload.single("paper"),async (req,res) => {
     try {
-        await newPaper.save();
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
-        console.log(e);
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path);
+        console.log(result);
+
+        let rp = new researchPaper({
+            title: req.body.title,
+            author: req.body.author,
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            paper: result.url,
+            CloudinaryID: result.public_id,
+        });
+        // Save user
+        await rp.save();
+        res.send({success:true})
+    } catch (err) {
+        console.log(err);
     }
-
-})
-
-router.post('/uploadWorkShop',async (req,res) => {
-    const p = req.body;
-
-    const newWS = new workshop(p);
-    try {
-        await newWS.save();
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
-        console.log(e);
-    }
-
 })
 
 router.post('/attendee',async (req,res)=>{
@@ -111,7 +101,7 @@ router.post('/attendee',async (req,res)=>{
         from: 'sliit.conference2021@gmail.com',
         to: details.email,
         subject: 'Registering for SLIIT Conference',
-        text: 'Thank you pakaya :D'
+        text: 'Thank you Registering '
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {

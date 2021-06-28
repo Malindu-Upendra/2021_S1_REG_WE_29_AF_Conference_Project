@@ -21,7 +21,7 @@ export class Section extends Component{
         return(
 
             <section>
-                <Route path="/" component={Login} exact />
+                <Route path="/login" component={Login} exact />
                 <Route path="/contactUs" component={ContactUs} exact />
                 <Route path="/registrationPage" component={RegistrationPage} exact />
                 <Route path="/payment" component={Payment} exact />
