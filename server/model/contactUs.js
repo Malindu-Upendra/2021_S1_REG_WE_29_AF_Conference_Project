@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -24,4 +24,4 @@ const contactUSSchema = Schema({
 
 const contactus = mongoose.model('contactus', contactUSSchema);
 
-export default contactus;
+module.exports = contactus;

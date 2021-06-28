@@ -1,13 +1,13 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
-import workshop from "../model/workshop.js";
-import researchPaper from "../model/researchPaper.js";
-import Attendee from "../model/attendee.js";
-import Payment from "../model/payment.js";
-import contactus from "../model/contactUs.js";
-import nodemailer from "nodemailer";
-import cloudinary from '../utils/cloudinary.js'
-import upload from '../utils/multer.js'
+const workshop = require("../model/workshop.js");
+const researchPaper = require("../model/researchPaper.js");
+const Attendee = require("../model/attendee.js");
+const Payment = require("../model/payment.js");
+const contactus = require("../model/contactUs.js");
+const nodemailer = require("nodemailer");
+const cloudinary = require('../utils/cloudinary.js');
+const upload = require('../utils/multer.js');
 
 //------------------------------------
 //sample checking cloudinary
@@ -17,7 +17,8 @@ router.post("/sample", upload.single("image"), async (req, res) => {
 
     try {
         // Upload image to cloudinary
-        const result = await cloudinary.v2.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload(req.file.path);
+        console.log(result);
         console.log("from method = ")
 
         // Create new user
@@ -25,12 +26,12 @@ router.post("/sample", upload.single("image"), async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             wconductors: req.body.wconductors,
-            flyer: result.secure_url,
+            flyer: result.url,
             cloudinary_id: result.public_id,
         });
         // Save user
         await wk.save();
-        res.json(wk);
+        res.send({success:true})
     } catch (err) {
         console.log(err);
     }
@@ -125,4 +126,4 @@ router.post('/attendee',async (req,res)=>{
 
 })
 
-export default router;
+module.exports = router;

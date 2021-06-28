@@ -1,6 +1,6 @@
-import express from "express";
-import tempConferenceDetails from "../model/tempConferenceDetails.js";
-import Keynotes from "../model/keynotes.js";
+const express = require('express');
+const tempConferenceDetails = require("../model/tempConferenceDetails.js");
+const Keynotes = require("../model/keynotes.js");
 const router = express.Router();
 
 router.get('/',async (req,res) =>{
@@ -63,4 +63,4 @@ router.post('/uploadConDetails',async (req,res) => {
 
 
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
-import researchPaper from "../model/researchPaper.js";
-import Workshop from "../model/workshop.js";
+const researchPaper = require("../model/researchPaper.js");
+const Workshop = require("../model/workshop.js");
 
 router.get('/uploadedResearchPapers',async (req,res)=>{
 
@@ -105,4 +105,4 @@ router.post('/uploadWorkShop/new',async (req,res) => {
 
 })
 
-export default router;
+module.exports = router;

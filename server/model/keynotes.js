@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -23,4 +23,4 @@ const KeynotesSchema = Schema({
 
 const keynotes = mongoose.model('keynotes', KeynotesSchema);
 
-export default keynotes;
+module.exports = keynotes;

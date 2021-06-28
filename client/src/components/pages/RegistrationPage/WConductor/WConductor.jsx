@@ -19,10 +19,14 @@ export class WConductor extends Component{
 
     handleImage = (e) => {
         this.setState({image:e.target.files[0]})
+        console.log(e.target.files[0])
         console.log(this.state.image)
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        console.log(this.state.image)
 
         try {
             let formData = new FormData();
@@ -31,21 +35,11 @@ export class WConductor extends Component{
             formData.append("wconductors", this.state.wconductors);
             formData.append("image", this.state.image);
 
-            // axios.post('http://localhost:5000/user/sample', formData).then(res => {
-            //     this.setState({title:'' , description:'' , wconductors:'' , file:''})
-            //     alert("Successfully added")
-            //     history.replace("/");
-            // })
-
-            const res = await fetch(`http://localhost:5000/user/sample`, {
-                method: "POST",
-                body: formData,
-            });
-            if (res.ok) {
-                this.setState({title:'' , description:'' , wconductors:'' , file:''})
+            axios.post('http://localhost:5000/user/sample', formData).then(res => {
                 alert("Successfully added")
                 history.replace("/");
-            }
+            })
+
         } catch (error) {
             console.log(error);
         }
@@ -70,7 +64,10 @@ export class WConductor extends Component{
                         <Form.Control type="text" name="wconductors" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.File id="exampleFormControlFile1" name="image" label="Example file input" onChange={this.handleImage}/>
+                        <Form.File id="exampleFormControlFile1"
+                                   name="image"
+                                   // accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                   label="Example file input" onChange={this.handleImage}/>
                     </Form.Group>
 
                     <Button variant="primary" onClick={this.handleSubmit} style={{width:'100%'}}>

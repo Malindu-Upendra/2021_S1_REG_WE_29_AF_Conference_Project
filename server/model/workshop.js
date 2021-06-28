@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -19,6 +19,9 @@ const workShopSchema = Schema({
     flyer:{
         type: String,
     },
+    cloudinaryID:{
+        type:String,
+    },
     approval:{
         type:String,
         default:'Not Approved'
@@ -26,5 +29,4 @@ const workShopSchema = Schema({
 });
 
 const workshops = mongoose.model('workshops', workShopSchema);
-
-export default workshops;
+module.exports =workshops;
