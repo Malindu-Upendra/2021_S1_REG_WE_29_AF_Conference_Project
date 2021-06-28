@@ -1,8 +1,12 @@
 const express = require('express');
 const tempConferenceDetails = require("../model/tempConferenceDetails.js");
-const Keynotes = require("../model/keynotes.js");
-const conferenceTracks = require("../model/conferenceTracks");
-const importantDates = require("../model/importantDates");
+// const Keynotes = require("../model/keynotes.js");
+// const conferenceTracks = require("../model/conferenceTracks");
+// const importantDates = require("../model/importantDates");
+const tempKeynotes = require("../model/tempkeynotes");
+const tempConferenceTracks = require("../model/tempConferenceTracks");
+const tempImportance = require("../model/tempImportanceDates");
+
 const router = express.Router();
 
 router.get('/',async (req,res) =>{
@@ -31,21 +35,20 @@ router.delete('/delete/:id', async (req,res) => {
 
 router.post('/keynotes',async (req,res)=>{
     const body = req.body;
-    const keynote = new Keynotes(body);
+    const tempKeynote = new tempKeynotes(body);
     try{
-       await keynote.save();
+       await tempKeynote.save();
        res.send({success:'true',message:"Successfully keynote inserted"});
     }catch (e) {
         console.log(e);
     }
-
 })
 
 router.post('/addConferenceTracksForm',async (req,res)=>{
     const body =req.body;
-    const conferenceTrack= new conferenceTracks(body);
+    const tempConferenceTrack= new tempConferenceTracks(body);
     try {
-        await conferenceTrack.save();
+        await tempConferenceTrack.save();
         res.send({success:'true',message:"Successfully conference Tracked Inserted"});
     }catch (e){
         console.log(e);
@@ -55,9 +58,9 @@ router.post('/addConferenceTracksForm',async (req,res)=>{
 
 router.post('/importantDatesForm',async (req,res)=>{
     const body =req.body;
-    const importantDate = new importantDates(body);
+    const tempImportantDate = new tempImportance(body);
     try {
-        await importantDate.save();
+        await tempImportantDate.save();
         res.send({success:'true',message:"Successfully important Dates form Inserted"});
     }catch (e){
         console.log(e);

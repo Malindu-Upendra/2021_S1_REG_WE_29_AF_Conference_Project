@@ -25,7 +25,7 @@ class RegistrationPage extends Component{
             <div className="container" style={{marginTop:'50px' , marginBottom:'50px'}}>
                 <h2 style={{backgroundColor:'#ff944d' , borderRadius:'5px', padding:'2px'}}>Please Select Your Category</h2>
             <div className="radio-buttons">
-                Normal Attendee
+                Normal Attendee {}
                 <input
                     id="Attendee"
                     value="Attendee"
@@ -34,7 +34,7 @@ class RegistrationPage extends Component{
                     onChange={this.handleChange}
                     checked={this.state.decision ==='Attendee'}
                 />
-                {" "}Researcher
+                {" "}Researcher {}
                 <input
                     id="Researcher"
                     value="Researcher"
@@ -42,7 +42,7 @@ class RegistrationPage extends Component{
                     type="radio"
                     onChange={this.handleChange}
                 />
-                {" "}WorkShop Conductor
+                {" "}WorkShop Conductor {}
                 <input
                     id="Conductor"
                     value="WorkShop Conductor"
