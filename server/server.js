@@ -1,17 +1,16 @@
-import express from 'express';
-import bodyparser from 'body-parser';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import admin from './routes/admin.js'
-import user from "./routes/user.js";
-import editor from "./routes/editor.js";
-import reviewer from "./routes/reviewer.js";
-import dotenv from 'dotenv';
+const express = require('express');
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const admin = require('./routes/admin.js');
+const user = require("./routes/user.js");
+const editor = require("./routes/editor.js");
+const reviewer = require("./routes/reviewer.js");
+const dotenv = require('dotenv');
 
 const app = express();
 app.use(cors());
-app.use(bodyparser.json({limit: "20mb", extended: true}));
-app.use(bodyparser.urlencoded({limit: "20mb", extended: true}));
+app.use(bodyparser.json());
 dotenv.config()
 
 const PORT = process.env.PORT || 5000;

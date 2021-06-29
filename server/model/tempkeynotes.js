@@ -2,9 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
-const workShopSchema = Schema({
-
+const TempKeynotesSchema = Schema({
     title: {
+        type: String,
+        required: true
+    },
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    university:{
         type: String,
         required: true
     },
@@ -12,21 +23,11 @@ const workShopSchema = Schema({
         type: String,
         required: true
     },
-    wconductors:{
-        type: String,
-        required: true
-    },
-    flyer:{
-        type: String,
-    },
-    cloudinaryID:{
-        type:String,
-    },
-    approval:{
-        type:String,
-        default:'Not Approved'
+    speakerImg:{
+        type: String
     }
 });
 
-const workshops = mongoose.model('workshops', workShopSchema);
-module.exports =workshops;
+const tempKeynotes = mongoose.model('tempKeynotes', TempKeynotesSchema);
+
+module.exports = tempKeynotes;

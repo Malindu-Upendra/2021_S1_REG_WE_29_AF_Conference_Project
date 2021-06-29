@@ -24,7 +24,7 @@ export  class Header extends Component{
                 <img src={Menu} alt="" width="20"/>
             </div>
             <div className="logo">
-                <Link to="/">  Panitan Conf .
+                <Link to="/">  SLIIT Conf .
                     <i className="fas fa-american-sign-language-interpreting"></i>
                 </Link>
             </div>
@@ -39,15 +39,12 @@ export  class Header extends Component{
                     <li><Link to="/"> Download Templates </Link></li>
                     <li><Link to="/nav"> Workshop </Link></li>
 
+                    <li><Link to="/registrationPage">  Register </Link></li>
 
 
-                    <li><Link to="/">  for Authors </Link></li>
+                    <li><Link to="/contactUs">  Contact-Us </Link></li>
 
-
-                    <li><Link to="/">  for Attendees </Link></li>
-
-                    <li><Link to="/">  Contact-Us </Link></li>
-
+                    <li><Link to="/login">  Login </Link></li>
 
                     <li className="close" onClick={this.menuToggle}>
                         <img src={Close} alt="" width="20"/>

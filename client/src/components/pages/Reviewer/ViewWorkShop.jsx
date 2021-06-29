@@ -54,7 +54,7 @@ export class ViewWorkShop extends Component{
                             <th>Title</th>
                             <th>Description</th>
                             <th>Workshop conductors</th>
-                            <th>Flyer</th>
+                            <th style={{width:'20%'}}>Flyer</th>
                             <th>Approval</th>
                         </tr>
                         </thead>
@@ -65,7 +65,7 @@ export class ViewWorkShop extends Component{
                                 <td>{workshops.title}</td>
                                 <td>{workshops.description}</td>
                                 <td>{workshops. wconductors}</td>
-                                <td>{workshops.flyer}</td>
+                                <td><a href={workshops.flyer} target="_blank"><img src={workshops.flyer} style={{width:'200px' , height:'200px'}}/></a></td>
                                 <td>
                                     { workshops.approval==='Not Approved' ?
                                         <>

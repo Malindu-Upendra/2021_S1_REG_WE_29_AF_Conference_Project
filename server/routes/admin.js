@@ -1,11 +1,10 @@
-import express from "express";
-import Conference from '../model/conference.js';
-import Attendee from "../model/attendee.js";
-import Workshop from "../model/workshop.js";
-import ResearchPaper from "../model/researchPaper.js";
-import UserModal from "../model/user.js";
-import jwt from "jsonwebtoken";
-import * as Console from "console";
+const express = require('express');
+const Conference = require('../model/conference.js');
+const Attendee = require("../model/attendee.js");
+const Workshop = require("../model/workshop.js");
+const ResearchPaper = require("../model/researchPaper.js");
+const UserModal = require("../model/user.js");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 router.get('/conferenceDetails',async (req,res)=>{
@@ -71,13 +70,13 @@ router.post('/login',async (req, res) => {
     const d = req.body;
     const user = new UserModal(d)
 
-    Console.log("from routes 1 " + user);
+    console.log("from routes 1 " + user);
     const email = user.email;
     const password = user.password;
 
     try {
         const oldUser = await UserModal.findOne({ email });
-        Console.log("from routes 2 " + oldUser);
+        console.log("from routes 2 " + oldUser);
 
         if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
 
@@ -94,4 +93,4 @@ router.post('/login',async (req, res) => {
 
 });
 
-export default router;
+module.exports = router;

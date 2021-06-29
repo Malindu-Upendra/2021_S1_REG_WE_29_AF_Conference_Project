@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Button, Form, Modal} from "react-bootstrap";
-import Payment from "../../Payment/Payment";
+import Loader from "react-loader-spinner";
 import axios from "axios";
 
 export class WConductor extends Component{
@@ -9,7 +9,10 @@ export class WConductor extends Component{
         title:'',
         description:'',
         wconductors:'',
-        image:''
+        image:'',
+        openModal:false,
+        visibility:false,
+        success:false
     }
 
     handleChange = (e) => {
@@ -19,10 +22,20 @@ export class WConductor extends Component{
 
     handleImage = (e) => {
         this.setState({image:e.target.files[0]})
+        console.log(e.target.files[0])
         console.log(this.state.image)
     }
 
-    handleSubmit = async () => {
+    ModalOff = () => {
+        this.setState({openModal:false})
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        this.setState({openModal:true})
+        this.setState({visibility:true});
+
+        console.log(this.state.image)
 
         try {
             let formData = new FormData();
@@ -31,21 +44,14 @@ export class WConductor extends Component{
             formData.append("wconductors", this.state.wconductors);
             formData.append("image", this.state.image);
 
-            // axios.post('http://localhost:5000/user/sample', formData).then(res => {
-            //     this.setState({title:'' , description:'' , wconductors:'' , file:''})
-            //     alert("Successfully added")
-            //     history.replace("/");
-            // })
+            axios.post('http://localhost:5000/user/uploadWorkShop', formData).then(res => {
+                this.setState({visibility:false});
+                this.setState({success:true});
+                setTimeout(() => {this.ModalOff()},200000)
+                window.location.reload(false);
 
-            const res = await fetch(`http://localhost:5000/user/sample`, {
-                method: "POST",
-                body: formData,
-            });
-            if (res.ok) {
-                this.setState({title:'' , description:'' , wconductors:'' , file:''})
-                alert("Successfully added")
-                history.replace("/");
-            }
+            })
+
         } catch (error) {
             console.log(error);
         }
@@ -58,7 +64,7 @@ export class WConductor extends Component{
                 <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of Workshop Conductor/s </h2></div>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Title of Research Paper</Form.Label>
+                        <Form.Label>Title of WorkShop</Form.Label>
                         <Form.Control type="text" name="title" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -70,13 +76,41 @@ export class WConductor extends Component{
                         <Form.Control type="text" name="wconductors" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.File id="exampleFormControlFile1" name="image" label="Example file input" onChange={this.handleImage}/>
+                        <Form.File id="exampleFormControlFile1"
+                                   name="image"
+                                   // accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                   label="Flyer" onChange={this.handleImage}/>
                     </Form.Group>
 
                     <Button variant="primary" onClick={this.handleSubmit} style={{width:'100%'}}>
                         Submit
                     </Button>
                 </Form>
+                <Modal
+                    show={this.state.openModal}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Body>
+                        {this.state.success ?
+                            <h4 style={{backgroundColor:'#33cc33', marginTop:'5px' , textAlign:'center', height:'50px', width:'100%' , borderRadius:'4px'}}> Successfully Uploaded </h4>
+                            :
+                         <form style={{textAlign:'center'}}>
+                            <Loader
+                                 visible={this.state.visibility}
+                                 type="Rings"
+                                 color="#00BFFF"
+                                 height={200}
+                                 width={200}
+                                 timeout={300000} //3 secs
+                            />
+                        <h2>Uploading... Please Wait</h2>
+                        </form>
+                        }
+                    </Modal.Body>
+
+                </Modal>
 
             </div>
         )
