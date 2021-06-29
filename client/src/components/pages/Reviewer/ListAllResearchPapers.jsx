@@ -22,8 +22,8 @@ export class ListAllResearchPapers extends Component{
         return(
             <>
             <div style={{paddingTop:'30px'}}></div>
-            <div className='container' style={{paddingTop:'30px',width:'60%',paddingBottom:'30px',paddingLeft:'30px'}}>
-                <Card style={{width:'60%'}}>
+            <div className='container' style={{paddingTop:'30px',width:'40%',paddingBottom:'30px'}}>
+                <Card style={{width:'100%'}}>
                     <Card.Header as="h5" style={{textAlign:'center'}}>
                         {this.state.paper.title}
                     </Card.Header>
