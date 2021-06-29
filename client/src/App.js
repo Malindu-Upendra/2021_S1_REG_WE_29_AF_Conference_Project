@@ -6,6 +6,7 @@ import Section from "./components/Section";
 import Navbar from "./components/pages/Admin/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export class App extends Component{
     state={
         user:'user',
