@@ -2,14 +2,14 @@ import { Component } from "react";
 import { Table } from "react-bootstrap";
 //import axios from "axios";
 
-export class Attendees extends Component {
+export class Keynotes extends Component {
 
 
     render() {
         return (
             <div className="container" style={{ paddingTop: '50px' }}>
 
-                <h2>Attendees</h2><br/>
+                <h2>Keynotes</h2><br/>
 
                 <Table style={{fontFamily: "Arial", padding: "10px"}} bordered hover size="sm">
                     <thead>
@@ -47,6 +47,6 @@ export class Attendees extends Component {
 
 }
 
-export default Attendees;
+export default Keynotes;
 
 
