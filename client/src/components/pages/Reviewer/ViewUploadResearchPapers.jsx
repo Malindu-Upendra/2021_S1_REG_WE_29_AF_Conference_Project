@@ -44,17 +44,18 @@ export class ViewUploadResearchPapers extends Component{
 
         return(
             <>
-
                 <div style={{paddingTop:'50px'}}></div>
                 <div className='container' style={{paddingTop:'30px', paddingBottom:'30px'}}>
+                    <h3 style={{color:'#009999', fontFamily:'"Times New Roman", Times, serif', textAlign:'center',paddingBottom:'10px'}}>
+                        List of Research Papers </h3>
                 <Table striped bordered hover variant="dark">
                     <thead>
-                    <tr>
-                        <th>Number</th>
+                    <tr style={{backgroundColor:'#334d4d'}}>
+                        <th>Lines</th>
                         <th>Title</th>
-                        <th>Author</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        {/*<th>Author</th>*/}
+                        {/*<th>Email</th>*/}
+                        {/*<th>Phone Number</th>*/}
                         <th>Paper</th>
                         <th>Approval</th>
                     </tr>
@@ -63,34 +64,68 @@ export class ViewUploadResearchPapers extends Component{
                     {this.state.ResearchPaper.map((ResearchPapers,index) => (
                     <tr>
                         <td>{index + 1}</td>
-                        <td>{ResearchPapers.title}</td>
-                        <td>{ResearchPapers.author}</td>
-                        <td>{ResearchPapers.email}</td>
-                        <td>{ResearchPapers.phoneNumber}</td>
-                        <td>{ResearchPapers.paper}</td>
+                        <td>
+                            <a href={`/ListResearchPaper/${ResearchPapers._id}`} >
+                            {ResearchPapers.title}
+                            </a>
+                        </td>
+                        {/*<td>{ResearchPapers.author}</td>*/}
+                        {/*<td>{ResearchPapers.email}</td>*/}
+                        {/*<td>{ResearchPapers.phoneNumber}</td>*/}
+                        <td>
+                            <a href={ResearchPapers.paper} target="_blank">
+                            <img src={ResearchPapers.paper} style={{width:'200px' , height:'200px'}}/>
+                            </a>
+                        </td>
                         <td>
                              { ResearchPapers.approval==='Not Approved' ?
                                  <>
-                                <h6 style={{backgroundColor:'yellow' , padding:'9px', color:'black', borderRadius:'3px'}}>  Pending</h6>
-                                <Button variant="outline-success" onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>Approve</Button>{' '}
+                                <h6 style={{backgroundColor:'yellow' , padding:'9px', color:'black', borderRadius:'3px', width:'100px'}}>
+                                    Pending
+                                </h6>
+                                <Button
+                                    variant="outline-success"
+                                    style={{ width:'100px'}}
+                                    onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>
+                                    Approve
+                                </Button>{' '}
                                 <p></p>
-                                <Button variant="outline-danger" onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>Reject</Button>{' '}
+                                <Button
+                                    variant="outline-danger"
+                                    style={{ width:'100px'}}
+                                    onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>
+                                    Reject
+                                </Button>{' '}
                             </>
                             : null }
 
                             { ResearchPapers.approval==='Approved' ?
                                 <>
-                                    <h6 style={{backgroundColor:'green' , padding:'9px', color:'black', borderRadius:'3px'}}>  Approved</h6>
+                                    <h6 style={{backgroundColor:'green' , padding:'9px', color:'black', borderRadius:'3px', width:'100px'}}>
+                                        Approved
+                                    </h6>
                                     <p></p>
-                                    <Button variant="outline-danger" onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>Reject</Button>{' '}
+                                    <Button
+                                        variant="outline-danger"
+                                        style={{ width:'100px'}}
+                                        onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>
+                                        Reject
+                                    </Button>{' '}
                                 </>
                                 : null }
 
                             { ResearchPapers.approval==='Declined' ?
                                 <>
-                                    <h6 style={{backgroundColor:'red' , padding:'9px', color:'black', borderRadius:'3px'}}>  Rejected</h6>
+                                    <h6 style={{backgroundColor:'red' , padding:'9px', color:'black', borderRadius:'3px', width:'100px'}}>
+                                        Rejected
+                                    </h6>
                                     <p></p>
-                                    <Button variant="outline-success" onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>Approve</Button>{' '}
+                                    <Button
+                                        variant="outline-success"
+                                        style={{ width:'100px'}}
+                                        onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>
+                                        Approve
+                                    </Button>{' '}
                                 </>
                                 : null }
                         </td>
@@ -99,7 +134,6 @@ export class ViewUploadResearchPapers extends Component{
                     </tbody>
                 </Table>
                 </div>
-
                 <div style={{paddingBottom:'50px'}}></div>
             </>
         )

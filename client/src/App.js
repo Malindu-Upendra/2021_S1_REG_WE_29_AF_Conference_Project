@@ -6,21 +6,10 @@ import Section from "./components/Section";
 import Navbar from "./components/pages/Admin/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
-import decode from "jwt-decode";
 
 export class App extends Component{
     state={
-        user:'',
-    }
-
-    componentDidMount = () => {
-
-        if(sessionStorage.token) {
-            this.setState({user: decode(sessionStorage.token).position})
-            console.log(this.state.user);
-        }else{
-            this.setState({user:'user'})
-        }
+        user:'user',
     }
 
     render(){
@@ -33,7 +22,7 @@ export class App extends Component{
                      <Footer/>
                 </>
                  : null}
-             { this.state.user==='Admin'  ?
+             { this.state.user==='admin'  ?
                  <>
                      <Navbar/>
                      <Section/>

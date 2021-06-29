@@ -18,6 +18,8 @@ export class Attendees extends Component {
 
     render() {
         return (
+<>
+            <div style={{paddingTop:'50px'}}></div>
             <div className="container" style={{paddingTop:'100px'}}>
 
                 <h2>Registered Attendees To Conference</h2><br/>
@@ -43,6 +45,7 @@ export class Attendees extends Component {
                     </tbody>
                 </Table>
             </div>
+</>
         )
     }
 
