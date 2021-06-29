@@ -25,6 +25,26 @@ router.get('/uploadedWorkshops',async (req,res)=>{
 
 })
 
+router.get('/getById/:id', async (req,res) => {
+
+    const id = req.params.id;
+    // console.log("id" + id)
+    const result = await researchPaper.findOne({_id:id});
+    // console.log("result" + result)
+    res.send({data:result, success:true})
+})
+
+router.get('/workshopGetById/:id', async (req,res) => {
+
+    const id = req.params.id;
+    // console.log("id" + id)
+    const result = await Workshop.findOne({_id:id});
+    // console.log("result" + result)
+    res.send({data:result, success:true})
+})
+
+
+
 router.put('/approveResearch/:id',async (req,res) => {
     const id = req.params.id;
 
