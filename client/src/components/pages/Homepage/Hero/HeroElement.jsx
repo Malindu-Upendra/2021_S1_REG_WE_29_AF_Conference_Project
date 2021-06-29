@@ -42,6 +42,7 @@ export const HeroH1 = styled.h1`
   margin-left: 11rem;
   margin-bottom: 1rem;
   letter-spacing: 3px;
+  color: white;
 `;
 
 export const HeroP = styled.p`

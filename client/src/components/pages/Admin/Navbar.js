@@ -6,6 +6,11 @@ import { SidebarData } from './SidebarData'
 import '../../css/Navbar.css';
 import { IconContext } from 'react-icons';
 
+const handleLogout = () => {
+    sessionStorage.clear();
+    window.location = "/"
+}
+
 function Navbar() {
     const [sidebar, setSidebar] = useState(false)
 
@@ -35,8 +40,14 @@ function Navbar() {
                                 </li>
                             )
                         })}
+                        <li className='nav-text'>
+                            <Link>
+                                <span onClick={handleLogout}>LogOut</span>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
+
             </IconContext.Provider>
         </>
     )
