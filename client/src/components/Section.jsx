@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ContactUs from './pages/ContactUs/Contactus'
 import Login from "./pages/Login/Login";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
@@ -15,6 +15,7 @@ import AddImportantDates from "./pages/Editor/AddImportantDates/AddImportantDate
 import CreateKeynotes from "./pages/Editor/CreateKeynotes/CreateKeynotes";
 import ListAllResearchPapers from "./pages/Reviewer/ListAllResearchPapers";
 import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
+import Homepage from "./pages/Homepage/Homepage.jsx";
 
 export class Section extends Component{
 
@@ -23,6 +24,8 @@ export class Section extends Component{
         return(
 
             <section>
+
+                <Route path="/" component={Homepage} exact />
                 <Route path="/login" component={Login} exact />
                 <Route path="/contactUs" component={ContactUs} exact />
                 <Route path="/registrationPage" component={RegistrationPage} exact />
