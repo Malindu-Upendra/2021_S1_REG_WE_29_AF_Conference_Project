@@ -23,8 +23,9 @@ router.post("/uploadWorkShop", upload.single("image"), async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             wconductors: req.body.wconductors,
+            email: req.body.email,
             flyer: result.url,
-            cloudinary_id: result.public_id,
+            cloudinaryID: result.public_id,
         });
         // Save user
         await wk.save();

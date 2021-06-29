@@ -9,6 +9,7 @@ export class WConductor extends Component{
         title:'',
         description:'',
         wconductors:'',
+        email:'',
         image:'',
         openModal:false,
         visibility:false,
@@ -42,6 +43,7 @@ export class WConductor extends Component{
             formData.append("title", this.state.title);
             formData.append("description", this.state.description);
             formData.append("wconductors", this.state.wconductors);
+            formData.append("email", this.state.email);
             formData.append("image", this.state.image);
 
             axios.post('http://localhost:5000/user/uploadWorkShop', formData).then(res => {
@@ -74,6 +76,10 @@ export class WConductor extends Component{
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>WorkShop Conductors</Form.Label>
                         <Form.Control type="text" name="wconductors" onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name="email" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.File id="exampleFormControlFile1"

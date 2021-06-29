@@ -25,6 +25,9 @@ const TempKeynotesSchema = Schema({
     },
     speakerImg:{
         type: String
+    },
+    cloudinaryID:{
+        type: String
     }
 });
 

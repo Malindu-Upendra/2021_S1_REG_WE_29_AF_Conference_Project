@@ -20,14 +20,8 @@ export class Contactus extends Component{
             message:""
 
         },
-        user:JSON.parse(localStorage.getItem('profile')),
         errors:{}
-});
-
-    componentDidMount() {
-        this.setState({user:JSON.parse(localStorage.getItem('profile'))})
-
-    }
+    });
 
     handleChange = (e) => {
         this.setState({

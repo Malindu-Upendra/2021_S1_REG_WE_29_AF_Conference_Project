@@ -1,11 +1,10 @@
 const express = require('express');
 const tempConferenceDetails = require("../model/tempConferenceDetails.js");
-// const Keynotes = require("../model/keynotes.js");
-// const conferenceTracks = require("../model/conferenceTracks");
-// const importantDates = require("../model/importantDates");
 const tempKeynotes = require("../model/tempkeynotes");
 const tempConferenceTracks = require("../model/tempConferenceTracks");
 const tempImportance = require("../model/tempImportanceDates");
+const cloudinary = require('../utils/cloudinary.js');
+const upload = require('../utils/multer.js');
 
 const router = express.Router();
 
@@ -33,10 +32,24 @@ router.delete('/delete/:id', async (req,res) => {
 
 })
 
-router.post('/keynotes',async (req,res)=>{
+router.post('/keynotes', upload.single("image"),async (req,res)=>{
     const body = req.body;
-    const tempKeynote = new tempKeynotes(body);
+
     try{
+    const result = await cloudinary.uploader.upload(req.file.path);
+
+    const tempKeynote = new tempKeynotes({
+
+        title:req.body.title,
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        university:req.body.university,
+        description:req.body.description,
+        speakerImg:result.url,
+        cloudinaryID:result.public_id
+
+     });
+
        await tempKeynote.save();
        res.send({success:'true',message:"Successfully keynote inserted"});
     }catch (e) {
@@ -68,7 +81,6 @@ router.post('/importantDatesForm',async (req,res)=>{
 
 })
 
-
 router.post('/uploadConDetails',async (req,res) => {
     const p = req.body;
 
@@ -82,7 +94,5 @@ router.post('/uploadConDetails',async (req,res) => {
     }
 
 })
-
-
 
 module.exports = router;

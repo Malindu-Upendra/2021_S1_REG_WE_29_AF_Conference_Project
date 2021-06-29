@@ -16,11 +16,17 @@ const workShopSchema = Schema({
         type: String,
         required: true
     },
+    email:{
+        type:String,
+        required:true
+    },
     flyer:{
         type: String,
+        required:true
     },
     cloudinaryID:{
         type:String,
+        required:true
     },
     approval:{
         type:String,

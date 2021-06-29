@@ -16,7 +16,9 @@ export class CreateKeynotes extends Component{
         firstname: '',
         lastname: '',
         university: '',
-        description: ''
+        description: '',
+        image:'',
+        previewImage:''
     }
 
     handleChange = (e) => {
@@ -28,20 +30,21 @@ export class CreateKeynotes extends Component{
         );
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        const  Keynote ={
-            title: this.state.title,
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            university: this.state.university,
-            description: this.state.description
-        };
 
-        console.log('Data send:', Keynote)
-        axios.post('http://localhost:5000/editor/keynotes',Keynote)
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let formData = new FormData();
+        formData.append("title", this.state.title);
+        formData.append("firstname", this.state.firstname);
+        formData.append("lastname", this.state.lastname);
+        formData.append("university", this.state.university);
+        formData.append("description", this.state.description);
+        formData.append("image", this.state.image);
+
+         await axios.post('http://localhost:5000/editor/keynotes',formData)
             .then(response => {
-                alert('KeyNotes data successfully inserted')
+                 alert('KeyNotes data successfully inserted')
                  window.location="/";
             })
             .catch(error => {
@@ -50,12 +53,26 @@ export class CreateKeynotes extends Component{
             })
     }
 
+    handleImage = (e) => {
+        this.setState({image:e.target.files[0]});
+        this.handlePreviewImage(e.target.files[0])
+        console.log(e.target.files[0])
+    }
+
+    handlePreviewImage = (image) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(image);
+        reader.onloadend = () => {
+            this.setState({previewImage:reader.result});
+        }
+    }
+
     render() {
         return(
                 <div style={{paddingBottom:'40px', paddingTop:'40px'}}>
                     <div className='container' style={{paddingTop:'40px', paddingBottom:'40px'}}>
                     <Card>
-                        <Card.Header className="text-center" as="h5">KeyNotes Speaker</Card.Header>
+                        <Card.Header className="text-center" as="h5">KeyNote Speaker</Card.Header>
                         <Card.Body>
                         <div className='container'>
 
@@ -116,14 +133,21 @@ export class CreateKeynotes extends Component{
                                         onChange={this.handleChange}
                                     />
                                 </Form.Group>
-                                <Form.Group className="mb-4" controlId="formBasicPassword">
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.File
+                                        style={{width:'100%'}}
                                         id="custom-file-translate-scss"
                                         label="choose the Picture"
+                                        name="image"
+                                        accept="images*/"
+                                        onChange={this.handleImage}
                                         custom
                                     />
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                {this.state.previewImage && (<div style={{width:'100%'}}>
+                                    <img style={{alignContent:'center' , width:'100%', height:'500px' ,marginBottom:'20px'}} src={this.state.previewImage}/>
+                                </div>)}
+                                <Button variant="primary" type="submit" style={{width:'100%'}}>
                                     <i className="fas fa-plus-circle"></i> {}
                                      Add Keynotes
                                 </Button>

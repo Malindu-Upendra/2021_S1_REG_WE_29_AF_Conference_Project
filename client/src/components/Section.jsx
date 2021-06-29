@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 import ContactUs from './pages/ContactUs/Contactus'
 import Login from "./pages/Login/Login";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import Payment from "./pages/Payment/Payment";
+import RegistrationPage from "./pages/User/RegistrationPage/RegistrationPage";
+import Payment from "./pages/User/Payment/Payment";
 // import Dashboard from "./pages/Reviewer/Dashboard";
 import ViewUploadResearchPapers from "./pages/Reviewer/ViewUploadResearchPapers";
 import ViewWorkShop from "./pages/Reviewer/ViewWorkShop";

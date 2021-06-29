@@ -3,8 +3,6 @@ import * as actionType from '../actionTypes/actionTypes';
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case actionType.AUTH:
-      console.log("reducers " + action.type)
-      console.log("reducers 2" +  action.data)
       localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
 
       return { ...state, authData: action.data, loading: false, errors: null };

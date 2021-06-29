@@ -71,24 +71,23 @@ router.post('/login',async (req, res) => {
     const user = new UserModal(d)
 
     console.log("from routes 1 " + user);
-    const email = user.email;
+    const position = user.position;
     const password = user.password;
 
     try {
-        const oldUser = await UserModal.findOne({ email });
-        console.log("from routes 2 " + oldUser);
+        const oldUser = await UserModal.findOne({ position });
 
-        if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
+        if (!oldUser) return res.send({ message: "User doesn't exist" ,success:false});
 
         if(password !== oldUser.password) {
             console.log("from routes 3 Invalid credentials")
-            return res.status(400).json({message: "Invalid credentials"});
+            return res.send({message: "Invalid credentials",success:false});
         }
-        const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
+        const token = jwt.sign({ position: oldUser.position, id: oldUser._id }, secret, { expiresIn: "1h" });
 
-        res.status(200).json({oldUser, token , success:true});
+        res.status(200).json({token , success:true});
     } catch (err) {
-        res.status(500).json({ message: "Something went wrong" });
+        res.status(500).json({ message: "Something went wrong",success:false });
     }
 
 });
