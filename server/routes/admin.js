@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const TempKeynotes = require('../model/tempkeynotes.js');
 const Keynote = require('../model/keynotes.js')
+const TempConfereceTracks = require('../model/tempConferenceTracks.js')
 
 router.get('/conferenceDetails',async (req,res)=>{
 
@@ -100,9 +101,46 @@ router.put('/declinekeynote/:id',async (req,res)=>{
     try{
 
         await TempKeynotes.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
-
         res.send({success:true})
 
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/getConferenceTracks',async (req,res) => {
+
+    try{
+        const tempCon = await TempConfereceTracks.find();
+        res.send({data:tempCon,success:true});
+
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/approveTracks/:id',async (req,res) => {
+
+    const id = req.params.id;
+
+    try{
+        await TempConfereceTracks.findByIdAndUpdate({_id:id},{ approval : 'Approved'});
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/declineTracks/:id',async (req,res) => {
+
+    const id = req.params.id;
+
+    try{
+        await TempConfereceTracks.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
+        res.send({success:true})
     }catch (e) {
         console.log(e)
     }
