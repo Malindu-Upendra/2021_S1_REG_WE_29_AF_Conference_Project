@@ -42,6 +42,8 @@ export const HeroH1 = styled.h1`
   margin-left: 11rem;
   margin-bottom: 1rem;
   letter-spacing: 3px;
+  color: white;
+  text-outline: black 5px;
 `;
 
 export const HeroP = styled.p`
@@ -62,6 +64,8 @@ export const HeroP2 = styled.p`
   font-size: clamp(1rem, 1vw, 3rem);
   margin-bottom: 2rem;
   margin-left: 4rem;
+  text-shadow: black;
+  
 `;
 
 

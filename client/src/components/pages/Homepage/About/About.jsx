@@ -1,5 +1,5 @@
 import React from 'react';
-import { FeatureContainer,Date} from './AboutElement.jsx';
+import { FeatureContainer,Date,Sdate} from './AboutElement.jsx';
 
 
 const About = () => {
@@ -19,7 +19,9 @@ const About = () => {
                 co-sponsorship by IEEE Sri Lanka Section and all publications are available in IEEE Xplore digital library.</p>
 
         </FeatureContainer>
-        <Date>Start Date</Date>
+        <Date>Date & Venue</Date>
+            <Sdate>JUNE01 - JUNE 03 in SRI LANKA INSTITUTE OF INFORMATION TECHNOLOGY </Sdate>
+
         </>
     );
 };
