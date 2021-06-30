@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Input, Label, FormGroup, Button } from 'reactstrap';
 import axios from "axios";
-import decode from 'jwt-decode'
+
 
 const Login = () => {
 
     const [userName,setUserName] = useState('');
     const [password,setPassword] = useState('');
-    const [user,setUser] = useState('')
 
     const handleChangeUserName = (e) => {
         setUserName(e.target.value);
@@ -33,10 +32,8 @@ const Login = () => {
                 if (response.data.success) {
                     sessionStorage.setItem("token",response.data.token)
                     console.log(response.data.token);
-                    if(sessionStorage.token){
-                        setUser(decode(sessionStorage.token).position)
-                        console.log(user);
-                    }
+                    window.location.reload(false);
+
                 } else {
                     alert(response.data.message)
                 }

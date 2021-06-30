@@ -20,7 +20,7 @@ export class Attendees extends Component {
         return (
 <>
             <div style={{paddingTop:'50px'}}></div>
-            <div className="container" style={{paddingTop:'100px'}}>
+            <div className="container">
 
                 <h2>Registered Attendees To Conference</h2><br/>
 

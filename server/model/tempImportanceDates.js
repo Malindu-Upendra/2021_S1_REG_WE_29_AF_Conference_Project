@@ -11,6 +11,10 @@ const tempImportantDatesSchema = Schema({
         type: String,
         required: true
     },
+    approval:{
+        type:String,
+        default:'Not Approved'
+    }
 });
 
 const tempImportantDate= mongoose.model('tempImportantDates', tempImportantDatesSchema);

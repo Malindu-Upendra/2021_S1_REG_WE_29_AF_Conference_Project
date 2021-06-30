@@ -8,9 +8,13 @@ const tempConferenceTracksSchema = Schema({
         required: true
     },
     description:{
-        type: String,
+        type: [],
         required: true
     },
+    approval:{
+        type:String,
+        default:'Not Approved'
+    }
 });
 
 const tempConferenceTracks= mongoose.model('tempConferenceTracks', tempConferenceTracksSchema);

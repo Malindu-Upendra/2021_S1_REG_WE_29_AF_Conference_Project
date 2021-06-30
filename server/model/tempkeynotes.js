@@ -28,6 +28,10 @@ const TempKeynotesSchema = Schema({
     },
     cloudinaryID:{
         type: String
+    },
+    approval:{
+        type:String,
+        default:'Not Approved'
     }
 });
 
