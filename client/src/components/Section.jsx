@@ -8,7 +8,6 @@ import Payment from "./pages/User/Payment/Payment";
 import ViewUploadResearchPapers from "./pages/Reviewer/ViewUploadResearchPapers";
 import ViewWorkShop from "./pages/Reviewer/ViewWorkShop";
 import Attendees from "./pages/Admin/Attendees/Attendees.jsx";
-import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks";
 import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
 import Keynotes from "./pages/Admin/Keynotes/Keynotes";
 import NavBar from "./pages/Admin/Navbar";
