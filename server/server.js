@@ -6,6 +6,7 @@ const admin = require('./routes/admin.js');
 const user = require("./routes/user.js");
 const editor = require("./routes/editor.js");
 const reviewer = require("./routes/reviewer.js");
+const homepage = require("./routes/homepage.js")
 const dotenv = require('dotenv');
 
 const app = express();
@@ -24,4 +25,5 @@ app.use('/admin',admin);
 app.use('/user', user);
 app.use('/editor', editor);
 app.use('/reviewer', reviewer);
+app.use('homepage', homepage);
 
