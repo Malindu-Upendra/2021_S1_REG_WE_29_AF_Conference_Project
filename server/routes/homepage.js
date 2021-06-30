@@ -5,7 +5,7 @@ const TempKeynotes = require('../model/tempkeynotes.js');
 router.get('/getKeynotes',async (req,res) => {
 
     try {
-        const keynotes = await TempKeynotes.findOne({ approval : 'Approved'}).exec();
+        const keynotes = await TempKeynotes.find({ approval : 'Approved'}).exec();
         res.send({data:keynotes,success:true})
     }catch (e) {
         console.log(e)

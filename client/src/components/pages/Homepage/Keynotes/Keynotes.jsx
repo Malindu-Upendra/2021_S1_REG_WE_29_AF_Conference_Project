@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
     ProductsContainer,
     ProductWrapper,
@@ -10,28 +10,51 @@ import {
     ProductDesc,
     ProductButton
 } from './KeynoteElement.jsx';
-import {KeynoteData} from "./Keynotesdata";
+import axios from "axios";
 
-const Products = ({ heading, data }) => {
+
+class Keynote extends Component{
+
+    state = {
+        keynotes:[]
+    }
+
+    componentDidMount = () => {
+
+        axios.get('http://localhost:5000/homepage/getKeynotes').then(res => {
+                if (res.data.success) {
+                    this.setState({keynotes:res.data.data})
+                    console.log(res.data.data)
+                }
+            }
+        )
+    }
+
+    render() {
+
     return (
         <ProductsContainer>
-            <ProductsHeading>{heading}</ProductsHeading>
+            <ProductsHeading>Keynote Speakers</ProductsHeading>
             <ProductWrapper>
-                {KeynoteData.map((product, index) => {
-                    return (
+                {this.state.keynotes.map((keynote, index) => {
+                    return(
                         <ProductCard key={index}>
-                            <ProductImg src={product.img} alt={product.alt} />
+                            <ProductImg src={keynote.speakerImg}/>
                             <ProductInfo>
-                                <ProductTitle>{product.name}</ProductTitle>
-                                <ProductDesc>{product.desc}</ProductDesc>
-                                <ProductButton>{product.button}</ProductButton>
+                                <ProductTitle>{keynote.title + " " + keynote.firstname + " " + keynote.lastname}</ProductTitle>
+                                <ProductDesc>{keynote.university}</ProductDesc>
+                                <ProductButton>Learn More</ProductButton>
                             </ProductInfo>
                         </ProductCard>
-                    );
-                })}
+                        )
+                    }
+                   )
+                }
             </ProductWrapper>
         </ProductsContainer>
-    );
+        );
+    }
+
 };
 
-export default Products;
+export default Keynote;

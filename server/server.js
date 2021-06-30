@@ -25,5 +25,5 @@ app.use('/admin',admin);
 app.use('/user', user);
 app.use('/editor', editor);
 app.use('/reviewer', reviewer);
-app.use('homepage', homepage);
+app.use('/homepage', homepage);
 
