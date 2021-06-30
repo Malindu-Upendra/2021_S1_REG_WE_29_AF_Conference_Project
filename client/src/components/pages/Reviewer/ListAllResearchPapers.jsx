@@ -51,6 +51,7 @@ export class ListAllResearchPapers extends Component{
                     </Card.Body>
                 </Card>
             </div>
+                <div style={{paddingBottom:'50px'}}></div>
             </>
         )
     }
