@@ -20,8 +20,14 @@ export class ViewWorkShop extends Component{
         }).catch(err => err.message)
     }
 
-    DeclineWorkshop = (id) => {
-        axios.put(`http://localhost:5000/reviewer/declineWorkShop/${id}`).
+    DeclineWorkshop = (id,email) => {
+
+        const data = {
+            id:id,
+            email:email
+        }
+
+        axios.put(`http://localhost:5000/reviewer/declineWorkShop/${id}`,data).
         then(res =>{
             if(res.data.success){
                 alert(res.data.message);
@@ -30,8 +36,14 @@ export class ViewWorkShop extends Component{
         })
     }
 
-    ApproveWorkshop = (id) => {
-        axios.put(`http://localhost:5000/reviewer/approveWorkShop/${id}`).
+    ApproveWorkshop = (id,email) => {
+
+        const data = {
+            id:id,
+            email:email
+        }
+
+        axios.put(`http://localhost:5000/reviewer/approveWorkShop/${id}`,data).
         then(res =>{
             if(res.data.success){
                 alert(res.data.message);
@@ -84,7 +96,7 @@ export class ViewWorkShop extends Component{
                                         <Button
                                             variant="outline-success"
                                             style={{ width:'100px'}}
-                                            onClick={this.ApproveWorkshop.bind(this,workshops._id)}>
+                                            onClick={this.ApproveWorkshop.bind(this,workshops._id,workshops.email)}>
                                             Approve
                                         </Button>{' '}
 
@@ -92,7 +104,7 @@ export class ViewWorkShop extends Component{
                                         <Button
                                             variant="outline-danger"
                                             style={{ width:'100px'}}
-                                            onClick={this.DeclineWorkshop.bind(this,workshops._id)}>
+                                            onClick={this.DeclineWorkshop.bind(this,workshops._id,workshops.email)}>
                                             Reject
                                         </Button>{' '}
                                         </>
@@ -106,7 +118,7 @@ export class ViewWorkShop extends Component{
                                             <Button
                                                 variant="outline-danger"
                                                 style={{ width:'100px'}}
-                                                onClick={this.DeclineWorkshop.bind(this,workshops._id)}>
+                                                onClick={this.DeclineWorkshop.bind(this,workshops._id,workshops.email)}>
                                                 Reject
                                             </Button>{' '}
                                         </>
@@ -121,7 +133,7 @@ export class ViewWorkShop extends Component{
                                             <Button
                                                 variant="outline-success"
                                                 style={{ width:'100px'}}
-                                                onClick={this.ApproveWorkshop.bind(this,workshops._id)}>
+                                                onClick={this.ApproveWorkshop.bind(this,workshops._id,workshops.email)}>
                                                 Approve
                                             </Button>{' '}
                                         </>

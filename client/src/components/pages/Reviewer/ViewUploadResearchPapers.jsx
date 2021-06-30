@@ -4,7 +4,6 @@ import {Button, Table} from "react-bootstrap";
 
 
 export class ViewUploadResearchPapers extends Component{
-
     constructor(props) {
         super(props);
     }
@@ -20,8 +19,12 @@ export class ViewUploadResearchPapers extends Component{
         }).catch(err => err.message)
     }
 
-    DeclineResearchPapers = (id) => {
-        axios.put(`http://localhost:5000/reviewer/declineResearch/${id}`).
+    DeclineResearchPapers = (id,email) => {
+        const data = {
+            id:id,
+            email:email
+        }
+        axios.put(`http://localhost:5000/reviewer/declineResearch/${id}`,data).
         then(res =>{
             if(res.data.success){
                 alert(res.data.message);
@@ -30,8 +33,12 @@ export class ViewUploadResearchPapers extends Component{
         })
     }
 
-    ApproveResearchPapers = (id) => {
-        axios.put(`http://localhost:5000/reviewer/approveResearch/${id}`).
+    ApproveResearchPapers = (id,email) => {
+        const data = {
+            id:id,
+            email:email
+        }
+        axios.put(`http://localhost:5000/reviewer/approveResearch/${id}`,data).
         then(res =>{
             if(res.data.success){
                 alert(res.data.message);
@@ -41,7 +48,6 @@ export class ViewUploadResearchPapers extends Component{
     }
 
     render() {
-
         return(
             <>
                 <div style={{paddingTop:'50px'}}></div>
@@ -86,14 +92,14 @@ export class ViewUploadResearchPapers extends Component{
                                 <Button
                                     variant="outline-success"
                                     style={{ width:'100px'}}
-                                    onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>
+                                    onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id,ResearchPapers.email)}>
                                     Approve
                                 </Button>{' '}
                                 <p></p>
                                 <Button
                                     variant="outline-danger"
                                     style={{ width:'100px'}}
-                                    onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>
+                                    onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id,ResearchPapers.email)}>
                                     Reject
                                 </Button>{' '}
                             </>
@@ -108,7 +114,7 @@ export class ViewUploadResearchPapers extends Component{
                                     <Button
                                         variant="outline-danger"
                                         style={{ width:'100px'}}
-                                        onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id)}>
+                                        onClick={this.DeclineResearchPapers.bind(this,ResearchPapers._id,ResearchPapers.email)}>
                                         Reject
                                     </Button>{' '}
                                 </>
@@ -123,7 +129,7 @@ export class ViewUploadResearchPapers extends Component{
                                     <Button
                                         variant="outline-success"
                                         style={{ width:'100px'}}
-                                        onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id)}>
+                                        onClick={this.ApproveResearchPapers.bind(this,ResearchPapers._id,ResearchPapers.email)}>
                                         Approve
                                     </Button>{' '}
                                 </>
