@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Hero from "./Hero/Hero.jsx";
 import About from "./About/About";
 import Keynotes from "./Keynotes/Keynotes";
+import ConferenceTracks from './ConferenceTracks/ConferenceTracks.jsx'
 
 
 export class Homepage extends Component{
@@ -12,6 +13,7 @@ export class Homepage extends Component{
             <Hero/>
             <About/>
             <Keynotes/>
+            <ConferenceTracks/>
             </>
         )
     }
