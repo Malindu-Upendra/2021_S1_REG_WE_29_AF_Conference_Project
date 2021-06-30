@@ -68,7 +68,7 @@ const Login = () => {
 
                 <FormGroup>
                     <Label for="pass"><b> Password </b></Label>
-                    <Input id="password"  name="password" placeholder="Enter Your Password" onChange={handleChangePassword} />
+                    <Input id="password" type='password' name="password" placeholder="Enter Your Password" onChange={handleChangePassword} />
                 </FormGroup>
 
                 <p> </p>

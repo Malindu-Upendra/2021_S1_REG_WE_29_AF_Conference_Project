@@ -14,18 +14,23 @@ describe('View the Attendees', () => {
 
     });
 })
+
+
 describe('ViewConferenceTracks', () => {
     it('worked  without any issues', () => {
         const div1 =document.createElement("div1")
         ReactDom.render(<ConferenceTracks/>,div1)
     });
 })
+
 describe('ViewInsertedKeyNotes', () => {
     it('worked  without any issues', () => {
         const div2 =document.createElement("div2")
         ReactDom.render(<InsertedKeynotes/>,div2)
     });
 })
+
+
 describe('ViewImportantDates', () => {
     it('worked  without any issues', () => {
         const div3 =document.createElement("div3")

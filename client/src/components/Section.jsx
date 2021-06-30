@@ -11,7 +11,7 @@ import Attendees from "./pages/Admin/Attendees/Attendees.jsx";
 import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
 import RetrieveWorkShop from "./pages/Admin/RetrieveWorkShop/RetrieveWorkShop";
 import NavBar from "./pages/Admin/Navbar";
-import KeynoteSpeakers from "./pages/Homepage/KeynoteSpeakers";
+import KeynoteSpeakers from "./pages/Homepage/Keynotes/Keynotes.jsx";
 import ReviewerNavbar from "./pages/Reviewer/ReviewerNavbar";
 import AddConferenceTracks from "./pages/Editor/AddConferenceTracks/AddConferenceTracks";
 import AddImportantDates from "./pages/Editor/AddImportantDates/AddImportantDates";
@@ -41,9 +41,8 @@ export class Section extends Component{
                 <Route path="/researchPaper" component={ViewUploadResearchPapers} exact />
                 <Route path="/workshop" component={ViewWorkShop} exact />
                 <Route path="/admin/attendees" component={Attendees} exact />
-                <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
                 <Route path="/admin/importantdates" component={ImportantDates} exact />
-                <Route path="/admin/keynotes" component={RetrieveWorkShop} exact />
+                <Route path="/admin/keynotes" component={Keynote} exact />
                 <Route path="/admin/navbar" component={NavBar} exact />
                 <Route path="/keynoteSpeakers" component={KeynoteSpeakers} exact />
                 <Route path="/reviewer/navbar" component={ReviewerNavbar} exact />
@@ -53,7 +52,7 @@ export class Section extends Component{
                 <Route path="/ListResearchPaper/:id" component={ListAllResearchPapers} exact />
                 <Route path="/ListWorkshop/:id" component={ListAllWorkshop} exact />
                 <Route path="/admin/ListKeynotes" component={InsertedKeynotes} exact />
-                <Route path="/admin/RetrieveWorkShop" component={Keynote} exact />
+                <Route path="/admin/RetrieveWorkShop" component={RetrieveWorkShop} exact />
                 <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
                 <Route path="/editor/conferencetracks" component={AddConferenceTracks} exact />
                 <Route path="/editor/importantdates" component={AddImportantDates} exact />

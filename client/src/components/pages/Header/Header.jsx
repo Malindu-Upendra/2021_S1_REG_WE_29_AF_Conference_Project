@@ -51,7 +51,7 @@ export  class Header extends Component{
                 <ul className={toggle ? "toggle" : ""}>
 
                     <li><Link to="/"> <i className="fas fa-home"></i> Home</Link></li>
-                    <li><Link to="/">  Keynotes </Link></li>
+                    <li><Link to="/keynoteSpeakers">  Keynotes </Link></li>
 
 
                     <li><Link to="/"> Download Templates </Link></li>

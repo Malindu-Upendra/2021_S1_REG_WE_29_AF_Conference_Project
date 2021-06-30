@@ -14,18 +14,24 @@ describe('ViewWorkShop', () => {
 
     });
 })
+
+
 describe('ViewResearchPaper', () => {
     it('worked  without any issues', () => {
         const div1 =document.createElement("div1")
         ReactDom.render(<ResearchPaper/>,div1)
     });
 })
+
+
 describe('ViewAllWorkshopByID', () => {
     it('worked  without any issues', () => {
         const div2 =document.createElement("div2")
         ReactDom.render(<ListWorkshopByID/>,div2)
     });
 })
+
+
 describe('ViewAllResearchPapersByID', () => {
     it('worked  without any issues', () => {
         const div3 =document.createElement("div3")

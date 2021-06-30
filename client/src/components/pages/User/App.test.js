@@ -14,18 +14,24 @@ describe('Paypal inserted', () => {
 
     });
 })
+
+
 describe('Attendee inserted', () => {
     it('worked  without any issues', () => {
         const div1 =document.createElement("div1")
         ReactDom.render(<Attendee/>,div1)
     });
 })
+
+
 describe('Researches inserted', () => {
     it('worked  without any issues', () => {
         const div2 =document.createElement("div2")
         ReactDom.render(<Researcher/>,div2)
     });
 })
+
+
 describe('Workshop Conductor inserted', () => {
     it('worked  without any issues', () => {
         const div3 =document.createElement("div3")

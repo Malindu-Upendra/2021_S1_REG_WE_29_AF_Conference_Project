@@ -9,8 +9,6 @@ export const SidebarData = [
 
         title: 'Attendees',
         path: '/admin/attendees',
-        title: 'Important Dates',
-        path: '/admin/importantDates',
         cName: 'nav-text'
     },
     {
@@ -21,13 +19,10 @@ export const SidebarData = [
     {
         title: 'ImportantDates',
         path: '/admin/importantdates',
-        title: 'Conference Tracks',
-        path: '/admin/conferencetracks',
         cName: 'nav-text'
     },
     {
         title: 'Keynotes',
-        path: '/admin/keynotes',
         path: '/admin/ListKeynotes',
         cName: 'nav-text'
     }

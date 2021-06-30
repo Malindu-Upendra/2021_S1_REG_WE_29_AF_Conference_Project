@@ -5,11 +5,7 @@ import React from 'react'
 
 
 export const SideBarData = [
-    {
-        title: 'Dashboard',
-        path: '/',
-        cName: 'nav-text'
-    },
+
     {
         title: 'ResearchPapers',
         path: '/researchPaper',
