@@ -50,7 +50,7 @@ export class AddConferenceTracks extends Component{
         axios.post('http://localhost:5000/editor/addConferenceTracksForm',AddConferenceTrack)
             .then(response => {
                 alert('AddConferenceTracks data are successfully inserted')
-                window.location="/";
+                window.location.reload(false)
             })
             .catch(error => {
                 console.log(error.message);
