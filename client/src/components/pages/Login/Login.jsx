@@ -46,6 +46,8 @@ const Login = () => {
                 window.location = "/admin/ListKeynotes"
             }else if(user === 'Reviewer'){
                 window.location = "/researchPaper"
+            }if(user === 'Editor'){
+                window.location = "/editor/conferencetracks"
             }
         }
     }
