@@ -1,22 +1,19 @@
-import {Component} from "react";
+import "../../../css/Countdown.css";
 import React, { useState, useEffect } from "react";
-import '../../../css/Countdown.css'
-import Clock from './CountdownData'
+import Clock from "./CountdownData";
 
 function Countdown() {
     const [timerDays, setTimerDays] = useState();
     const [timerHours, setTimerHours] = useState();
     const [timerMinutes, setTimerMinutes] = useState();
     const [timerSeconds, setTimerSeconds] = useState();
-
     let interval;
-
     const startTimer = () => {
-        const countDownDate = new Date("May 30,2021 ").getTime();
-
+        const countDownDate = new Date("June 01,2022 ").getTime();
         interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = countDownDate - now;
+
             const days = Math.floor(distance / (24 * 60 * 60 * 1000));
             const hours = Math.floor(
                 (distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
@@ -38,11 +35,11 @@ function Countdown() {
     };
 
     useEffect(() => {
-        startTimer();
+        startTimer()
     });
 
     return (
-        <div className="App">
+        <div className="App" style={{paddingBottom: '40px'}}>
             <Clock
                 timerDays={timerDays}
                 timerHours={timerHours}
@@ -51,6 +48,6 @@ function Countdown() {
             />
         </div>
     );
-}
+};
 
 export default Countdown;

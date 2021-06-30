@@ -42,6 +42,7 @@ export const Date = styled.div`
   text-align: left;
   margin-left: 42.5%;
   margin-top: -13%;
+  margin-bottom: 3%;
   
   
   
