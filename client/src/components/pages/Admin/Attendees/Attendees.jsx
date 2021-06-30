@@ -1,47 +1,53 @@
 import { Component } from "react";
 import { Table } from "react-bootstrap";
-//import axios from "axios";
+import axios from "axios";
 
 export class Attendees extends Component {
 
+    state = {
+        attendees:[]
+    }
+
+    componentDidMount = () => {
+
+        axios.get('http://localhost:5000/admin/attendees').then(res => {
+            this.setState({attendees:res.data})
+        })
+
+    }
 
     render() {
         return (
-            <div className="container" style={{ paddingTop: '50px' }}>
+<>
+            <div style={{paddingTop:'50px'}}></div>
+            <div className="container">
 
                 <h2>Attendees</h2><br/>
+
+                <h2>Registered Attendees To Conference</h2><br/>
 
                 <Table style={{fontFamily: "Arial", padding: "10px"}} bordered hover size="sm">
                     <thead>
                     <tr style={{backgroundColor: "blue", color: 'white'}}>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
                     </tr>
                     </thead>
                     <tbody>
+                    {this.state.attendees.map((attendee,index) => (
                     <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{index + 1}</td>
+                        <td>{attendee.name}</td>
+                        <td>{attendee.email}</td>
+                        <td>{attendee.phoneNumber}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
+                    ))}
                     </tbody>
                 </Table>
             </div>
+</>
         )
     }
 

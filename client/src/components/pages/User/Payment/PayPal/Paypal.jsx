@@ -1,5 +1,6 @@
 import React, {useRef, useEffect, useState} from "react";
 import axios from "axios";
+import '../css/paypal.css';
 
 export default function Paypal(props) {
     const paypal = useRef();
@@ -26,9 +27,9 @@ export default function Paypal(props) {
                 onApprove: async (data, actions) => {
                     await axios.post('http://localhost:5000/user/attendee',user).then(res => {
                         if(res.data.success) {
-
-                            window.location = '/';
-                            alert("Successfully Registered");
+                            props.onSuccess();
+                            // window.location = '/';
+                            // alert("Successfully Registered");
 
                         }
                     })
@@ -42,7 +43,7 @@ export default function Paypal(props) {
 
     return (
         <div>
-            <div ref={paypal}></div>
+            <div className="pay" ref={paypal}></div>
         </div>
     );
 }

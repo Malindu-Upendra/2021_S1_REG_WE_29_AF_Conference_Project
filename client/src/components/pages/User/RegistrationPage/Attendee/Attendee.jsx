@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { isEmail } from 'validator';
 import {Button, Form, Modal} from "react-bootstrap";
 import '../css/Attendee.css'
-import Payment from '../../Payment/Payment.jsx'
+//import Payment from '../../Payment/Payment.jsx'
+import Paypal from "../../Payment/PayPal/Paypal";
+import {Result} from "antd";
 
 class Register extends Component {
 
@@ -11,7 +13,8 @@ class Register extends Component {
         email:'',
         phoneNumber:0,
         amount:10,
-        openModal:''
+        openModal:'',
+        success:false
     }
 
     componentDidMount() {
@@ -24,8 +27,15 @@ class Register extends Component {
 
     }
 
-    ModalOff = () => {
-        this.setState({openModal:false})
+    ModalOff = (e) => {
+        this.setState({openModal: false})
+        if (this.state.success){
+            window.location.reload(false);
+        }
+    }
+
+    enableSuccess = () => {
+        this.setState({success:true})
     }
 
     handleChange = (e) => {
@@ -35,7 +45,7 @@ class Register extends Component {
 
     render() {
         return(
-            <div className='container' style={{marginTop:'50px' , marginBottom:'100px' }}>
+            <div className='container' style={{marginTop:'50px' , marginBottom:'50px' }}>
                 <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of the Attendee</h2></div>
             <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -50,6 +60,7 @@ class Register extends Component {
                      <Form.Label>Phone Number</Form.Label>
                     <Form.Control type="number" name="phoneNumber" onChange={this.handleChange} />
                 </Form.Group>
+                <h1>Ticket Price : USD 2</h1>
                 <Button variant="primary" type="submit" onClick={this.ModalOn} style={{width:'100%'}}>
                     Register
                 </Button>
@@ -62,12 +73,24 @@ class Register extends Component {
                         centered
                     >
                         <Modal.Body>
+                            {this.state.success ?
+                                <>
+                                    <Result
+                                        status="success"
+                                        title="Successfully Registered to The Conference"
+                                    />
+                                </>
+                                :
+                                <>
                             <h4>Payment Method</h4>
-                            <Payment
+                            <Paypal
                                 email={this.state.email}
                                 name={this.state.fname}
                                 phoneNumber={this.state.phoneNumber}
-                                amount={this.state.amount}/>
+                                amount={this.state.amount}
+                                onSuccess={this.enableSuccess}/>
+                                </>
+                            }
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="outline-danger" type="submit" onClick={this.ModalOff}>Close</Button>

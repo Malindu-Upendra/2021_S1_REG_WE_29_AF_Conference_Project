@@ -1,7 +1,8 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
-import researchPaper from "../model/researchPaper.js";
-import Workshop from "../model/workshop.js";
+const researchPaper = require("../model/researchPaper.js");
+const Workshop = require("../model/workshop.js");
+const nodemailer = require("nodemailer");
 
 router.get('/uploadedResearchPapers',async (req,res)=>{
 
@@ -25,13 +26,58 @@ router.get('/uploadedWorkshops',async (req,res)=>{
 
 })
 
+router.get('/getById/:id', async (req,res) => {
+
+    const id = req.params.id;
+    // console.log("id" + id)
+    const result = await researchPaper.findOne({_id:id});
+    // console.log("result" + result)
+    res.send({data:result, success:true})
+})
+
+router.get('/workshopGetById/:id', async (req,res) => {
+
+    const id = req.params.id;
+    // console.log("id" + id)
+    const result = await Workshop.findOne({_id:id});
+    // console.log("result" + result)
+    res.send({data:result, success:true})
+})
+
+
+
 router.put('/approveResearch/:id',async (req,res) => {
     const id = req.params.id;
+    const body = req.body
 
     try {
-        await researchPaper.findByIdAndUpdate({id},{ approval : 'Approved'})
+        await researchPaper.findByIdAndUpdate({_id:id},{ approval : 'Approved'})
 
-        res.send({success:'true',message:"Successfully updated"});
+        let transporter = nodemailer.createTransport({
+
+            service:'gmail',
+            auth: {
+                user: 'sliit.conference2021@gmail.com',
+                pass: '1m2a3l4i5n6d7u'
+            }
+        });
+
+        let mailOptions = {
+            from: 'sliit.conference2021@gmail.com',
+            to: body.email,
+            subject: 'Regarding Research Paper Uploaded in ICAF',
+            text: 'We have Approved your Research Paper to Present in ICAF. Thank You !'
+        };
+
+        await transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+
+        res.send({success:'true',message:"Successfully Research paper updated"});
     }catch (e) {
         console.log(e);
     }
@@ -40,38 +86,75 @@ router.put('/approveResearch/:id',async (req,res) => {
 
 router.put('/declineResearch/:id',async (req,res) => {
     const id = req.params.id;
+    const body = req.body
 
     try {
-        await researchPaper.findByIdAndUpdate({id},{ approval : 'Declined'})
+        await researchPaper.findByIdAndUpdate({_id:id},{ approval : 'Declined'})
 
-        res.send({success:'true',message:"Successfully updated"});
+        let transporter = nodemailer.createTransport({
+
+            service:'gmail',
+            auth: {
+                user: 'sliit.conference2021@gmail.com',
+                pass: '1m2a3l4i5n6d7u'
+            }
+        });
+
+        let mailOptions = {
+            from: 'sliit.conference2021@gmail.com',
+            to: body.email,
+            subject: 'Regarding Research Paper Uploaded in ICAF',
+            text: 'Sorry to inform that We have Declined your Research Paper that have been uploaded to ICAF. Thank You ! '
+        };
+
+        await transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+
+        res.send({success:'true',message:"Successfully Research paper updated"});
     }catch (e) {
         console.log(e);
     }
 
 })
 
-router.post('/uploadResearch/new',async (req,res) => {
-    const p = req.body;
-
-    const newPaper = new researchPaper(p);
-    try {
-        await newPaper.save();
-
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
-        console.log(e);
-    }
-
-})
 
 router.put('/approveWorkShop/:id',async (req,res) => {
     const id = req.params.id;
-
+    const body = req.body
+    console.log(body)
     try {
-        Workshop.findByIdAndUpdate({id},{ approval : 'Approved'});
+      await  Workshop.findByIdAndUpdate({_id:id},{ approval : 'Approved'});
 
-        res.send({success:'true',message:"Successfully updated"});
+        let transporter = nodemailer.createTransport({
+
+            service:'gmail',
+            auth: {
+                user: 'sliit.conference2021@gmail.com',
+                pass: '1m2a3l4i5n6d7u'
+            }
+        });
+
+        let mailOptions = {
+            from: 'sliit.conference2021@gmail.com',
+            to: body.email,
+            subject: 'Regarding Workshop Uploaded in ICAF',
+            text: 'We have Approved your Workshop to be Conducted in ICAF. Thank You ! '
+        };
+
+        await transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+
+        res.send({success:'true',message:"Successfully WorkShop updated"});
     }catch (e) {
         console.log(e);
     }
@@ -80,29 +163,40 @@ router.put('/approveWorkShop/:id',async (req,res) => {
 
 router.put('/declineWorkShop/:id',async (req,res) => {
     const id = req.params.id;
+    const body = req.body
 
     try {
-        Workshop.findByIdAndUpdate({id},{ approval : 'Declined'});
+     await Workshop.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
 
-        res.send({success:'true',message:"Successfully updated"});
+        let transporter = nodemailer.createTransport({
+
+            service:'gmail',
+            auth: {
+                user: 'sliit.conference2021@gmail.com',
+                pass: '1m2a3l4i5n6d7u'
+            }
+        });
+
+        let mailOptions = {
+            from: 'sliit.conference2021@gmail.com',
+            to: body.email,
+            subject: 'Regarding Workshop Uploaded in ICAF',
+            text: 'Sorry to inform that We have Declined your Workshop that have been uploaded to ICAF. Thank You ! '
+        };
+
+        await transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+
+        res.send({success:'true',message:"Successfully WorkShop updated"});
     }catch (e) {
         console.log(e);
     }
 
 })
 
-router.post('/uploadWorkShop/new',async (req,res) => {
-    const p = req.body;
-
-    const newWS = new Workshop(p);
-    try {
-        await newWS.save();
-
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
-        console.log(e);
-    }
-
-})
-
-export default router;
+module.exports = router;

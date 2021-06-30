@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Input, Label, FormGroup, Button } from 'reactstrap';
-import { useDispatch } from "react-redux";
-import { AUTH } from "../../actionTypes/actionTypes";
 import axios from "axios";
+import decode from "jwt-decode";
+
 
 const Login = () => {
 
     const [userName,setUserName] = useState('');
     const [password,setPassword] = useState('');
-    const [user,setUser] = useState('')
-
-    const dispatch = useDispatch();
 
     const handleChangeUserName = (e) => {
         setUserName(e.target.value);
@@ -21,7 +18,7 @@ const Login = () => {
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         console.log(userName,password);
@@ -31,20 +28,28 @@ const Login = () => {
             password:password
         }
 
-        axios.post('http://localhost:5000/admin/login',LoginData)
+        await axios.post('http://localhost:5000/admin/login',LoginData)
             .then(response => {
                 if (response.data.success) {
-                    setUser(response.data)
-                    console.log(response.data);
-                    const data = response.data;
-                    console.log(data);
-                    dispatch({ type: AUTH, data });
-                    window.location = '/contactUs'
+                    sessionStorage.setItem("token",response.data.token)
+
                 } else {
-                    alert('Failed to login')
+                    alert(response.data.message)
                 }
             })
             .catch(err => console.log(err));
+
+        if(sessionStorage.token) {
+            const user = decode(sessionStorage.token).position;
+
+            if(user === 'Admin'){
+                window.location = "/admin/ListKeynotes"
+            }else if(user === 'Reviewer'){
+                window.location = "/researchPaper"
+            }if(user === 'Editor'){
+                window.location = "/editor/conferencetracks"
+            }
+        }
     }
 
     return (
@@ -52,7 +57,7 @@ const Login = () => {
         <div>
             <p> </p>
 
-            {/* <div className="container"> */}
+             <div className="container">
             <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
@@ -72,7 +77,7 @@ const Login = () => {
                 <p> </p>
 
             </Form>
-            {/* </div> */}
+             </div>
             <p> </p>
 
         </div>

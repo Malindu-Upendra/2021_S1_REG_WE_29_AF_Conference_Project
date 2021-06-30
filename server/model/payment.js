@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -16,4 +16,4 @@ const paymentSchema = Schema({
 
 const payment = mongoose.model('payment', paymentSchema);
 
-export default payment;
+module.exports = payment;

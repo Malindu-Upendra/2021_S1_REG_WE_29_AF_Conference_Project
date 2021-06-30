@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ContactUs from './pages/ContactUs/Contactus'
 import Login from "./pages/Login/Login";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import Payment from "./pages/Payment/Payment";
+import RegistrationPage from "./pages/User/RegistrationPage/RegistrationPage";
+import Payment from "./pages/User/Payment/Payment";
 // import Dashboard from "./pages/Reviewer/Dashboard";
 import ViewUploadResearchPapers from "./pages/Reviewer/ViewUploadResearchPapers";
 import ViewWorkShop from "./pages/Reviewer/ViewWorkShop";
@@ -13,7 +13,18 @@ import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
 import Keynotes from "./pages/Admin/Keynotes/Keynotes";
 import NavBar from "./pages/Admin/Navbar";
 import KeynoteSpeakers from "./pages/Homepage/KeynoteSpeakers";
-
+import ReviewerNavbar from "./pages/Reviewer/ReviewerNavbar";
+import AddConferenceTracks from "./pages/Editor/AddConferenceTracks/AddConferenceTracks";
+import AddImportantDates from "./pages/Editor/AddImportantDates/AddImportantDates";
+import CreateKeynotes from "./pages/Editor/CreateKeynotes/CreateKeynotes";
+import ListAllResearchPapers from "./pages/Reviewer/ListAllResearchPapers";
+import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
+import Homepage from "./pages/Homepage/Homepage.jsx";
+import InsertedKeynotes from "./pages/Admin/EditorChanges/InsertedKeynotes.jsx";
+//import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
+//import ImportantDatesSection from "./pages/Homepage/ImportantDates";
+import Keynote from "./pages/Admin/Keynotes/Keynotes.jsx";
+import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks.jsx";
 
 export class Section extends Component{
 
@@ -22,7 +33,9 @@ export class Section extends Component{
         return(
 
             <section>
-                <Route path="/" component={Login} exact />
+
+                <Route path="/" component={Homepage} exact />
+                <Route path="/login" component={Login} exact />
                 <Route path="/contactUs" component={ContactUs} exact />
                 <Route path="/registrationPage" component={RegistrationPage} exact />
                 <Route path="/payment" component={Payment} exact />
@@ -34,6 +47,20 @@ export class Section extends Component{
                 <Route path="/admin/keynotes" component={Keynotes} exact />
                 <Route path="/admin/navbar" component={NavBar} exact />
                 <Route path="/keynoteSpeakers" component={KeynoteSpeakers} exact />
+                <Route path="/reviewer/navbar" component={ReviewerNavbar} exact />
+                <Route path="/addConferenceTracks" component={AddConferenceTracks} exact />
+                <Route path="/addImportanceDates" component={AddImportantDates} exact />
+                <Route path="/createKeynotes" component={CreateKeynotes} exact />
+                <Route path="/ListResearchPaper/:id" component={ListAllResearchPapers} exact />
+                <Route path="/ListWorkshop/:id" component={ListAllWorkshop} exact />
+                <Route path="/admin/ListKeynotes" component={InsertedKeynotes} exact />
+                <Route path="/admin/Keynotes" component={Keynote} exact />
+                <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
+                <Route path="/editor/conferencetracks" component={AddConferenceTracks} exact />
+                <Route path="/editor/importantdates" component={AddImportantDates} exact />
+                <Route path="/editor/createkeynotes" component={CreateKeynotes} exact />
+                {/*<Route path="/ReviewerDashboard" component={Dashboard} exact />*/}
+
             </section>
         )
     }

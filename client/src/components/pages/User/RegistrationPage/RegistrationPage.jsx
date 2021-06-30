@@ -1,5 +1,7 @@
 import { Component } from "react";
 import Attendee from "./Attendee/Attendee.jsx";
+import Researcher from "./Researcher/Researcher.jsx";
+import WConductor from "./WConductor/WConductor.jsx";
 
 class RegistrationPage extends Component{
 
@@ -23,7 +25,7 @@ class RegistrationPage extends Component{
             <div className="container" style={{marginTop:'50px' , marginBottom:'50px'}}>
                 <h2 style={{backgroundColor:'#ff944d' , borderRadius:'5px', padding:'2px'}}>Please Select Your Category</h2>
             <div className="radio-buttons">
-                Normal Attendee
+                Normal Attendee {}
                 <input
                     id="Attendee"
                     value="Attendee"
@@ -32,7 +34,7 @@ class RegistrationPage extends Component{
                     onChange={this.handleChange}
                     checked={this.state.decision ==='Attendee'}
                 />
-                {" "}Researcher
+                {" "}Researcher {}
                 <input
                     id="Researcher"
                     value="Researcher"
@@ -40,7 +42,7 @@ class RegistrationPage extends Component{
                     type="radio"
                     onChange={this.handleChange}
                 />
-                {" "}WorkShop Conductor
+                {" "}WorkShop Conductor {}
                 <input
                     id="Conductor"
                     value="WorkShop Conductor"
@@ -50,8 +52,17 @@ class RegistrationPage extends Component{
                 />
             </div>
 
-                { this.state.decision==='Researcher'  ? <h2>details of the { this.state.decision}</h2> : null }
-                { this.state.decision==='WorkShop Conductor'  ? <h2>details of the { this.state.decision}</h2> : null }
+                { this.state.decision==='Researcher'  ?
+                    <>
+                        <Researcher/>
+                    </>
+
+                    : null }
+                { this.state.decision==='WorkShop Conductor'  ?
+                    <>
+                        <WConductor />
+                    </>
+                    : null }
                 { this.state.decision==='Attendee'  ?
                     <>
                         <Attendee />

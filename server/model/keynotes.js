@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -7,7 +7,11 @@ const KeynotesSchema = Schema({
         type: String,
         required: true
     },
-    name: {
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
         type: String,
         required: true
     },
@@ -18,9 +22,18 @@ const KeynotesSchema = Schema({
     description:{
         type: String,
         required: true
+    },
+    speakerImg:{
+        type: String
+    },
+    cloudinaryID:{
+        type: String
+    },
+    approval:{
+        type:String
     }
 });
 
 const keynotes = mongoose.model('keynotes', KeynotesSchema);
 
-export default keynotes;
+module.exports = keynotes;

@@ -7,6 +7,10 @@ export class ImportantDates extends Component {
 
     render() {
         return (
+
+            <>
+            <div style={{paddingTop:'50px'}}></div>
+
             <div className="container" style={{ paddingTop: '50px' }}>
 
                 <h2>Important Dates</h2><br/>
@@ -27,6 +31,7 @@ export class ImportantDates extends Component {
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
+
                     <tr>
                         <td>2</td>
                         <td>Jacob</td>
@@ -42,6 +47,12 @@ export class ImportantDates extends Component {
                     </tbody>
                 </Table>
             </div>
+
+                    </tbody>
+                </Table>
+            </div>
+            </>
+
         )
     }
 

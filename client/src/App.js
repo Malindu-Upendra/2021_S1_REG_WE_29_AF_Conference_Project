@@ -5,28 +5,20 @@ import Footer from "./components/pages/Footer/Footer";
 import Section from "./components/Section";
 import Navbar from "./components/pages/Admin/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
+
 
 export class App extends Component{
-    state={
-        user:'user',
-    }
+
 
     render(){
         return(
          <Router>
-             { this.state.user==='user'  ?
                  <>
                      <Header/>
                      <Section/>
                      <Footer/>
                 </>
-                 : null}
-             { this.state.user==='admin'  ?
-                 <>
-                     <Navbar/>
-                     <Section/>
-                 </>
-                 : null}
          </Router>
         )
     }

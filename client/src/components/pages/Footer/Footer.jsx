@@ -39,7 +39,7 @@ export class Footer extends Component {
 
                             < Link to='/' className="social-logo">
 
-                                Panitan Conf .
+                                SLIIT Conf .
                                 <i className="fas fa-american-sign-language-interpreting">
                             </i>
                             </  Link>
@@ -50,7 +50,7 @@ export class Footer extends Component {
 
                         <small className="website-rights">
 
-                            &copy;  Panitan Conf, developed by Panitan Techs. All Rights Reserved
+                            &copy;  SLIIT Conf, developed by SLIIT Techs. All Rights Reserved
                         </small>
 
                         <div className="social-icon">

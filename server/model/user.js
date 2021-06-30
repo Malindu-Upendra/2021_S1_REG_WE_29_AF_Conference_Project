@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of admin side of website
@@ -15,4 +15,4 @@ const UserSchema = Schema({
 
 const User = mongoose.model('user', UserSchema);
 
-export default User;
+module.exports = User;

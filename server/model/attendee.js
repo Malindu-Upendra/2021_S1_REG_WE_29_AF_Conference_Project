@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -19,5 +19,4 @@ const attendeeSchema = Schema({
 });
 
 const attendee = mongoose.model('attendee', attendeeSchema);
-
-export default attendee;
+module.exports = attendee;

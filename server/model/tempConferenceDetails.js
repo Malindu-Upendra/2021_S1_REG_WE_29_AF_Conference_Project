@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Data Structure Of Conference
@@ -26,4 +26,4 @@ const tempConferenceSchema = Schema({
 
 const temmpconference = mongoose.model('tempConferenceDetails', tempConferenceSchema);
 
-export default temmpconference;
+module.exports = temmpconference;
