@@ -45,7 +45,7 @@ export class CreateKeynotes extends Component{
          await axios.post('http://localhost:5000/editor/keynotes',formData)
             .then(response => {
                  alert('KeyNotes data successfully inserted')
-                 window.location="/";
+                 window.location.reload(false)
             })
             .catch(error => {
                 console.log(error.message);

@@ -1,4 +1,7 @@
 import { Component } from "react";
+import { Table } from "react-bootstrap";
+//import axios from "axios";
+
 import {Button, Table} from "react-bootstrap";
 import axios from "axios";
 
@@ -42,6 +45,7 @@ export class ConferenceTracks extends Component {
         return (
             <>
             <div style={{paddingTop:'50px'}}></div>
+
             <div className="container" style={{ paddingTop: '50px' }}>
 
                 <h2>Conference Tracks</h2><br/>
@@ -49,6 +53,7 @@ export class ConferenceTracks extends Component {
                 <Table style={{fontFamily: "Arial", padding: "10px"}} bordered hover size="sm">
                     <thead>
                     <tr style={{backgroundColor: "blue", color: 'white'}}>
+
                         <th>Conference Track</th>
                         <th>Requirement</th>
                         <th>Action</th>

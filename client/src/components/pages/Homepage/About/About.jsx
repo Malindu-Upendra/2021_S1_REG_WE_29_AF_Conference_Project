@@ -1,6 +1,6 @@
 import React from 'react';
 import { FeatureContainer,Date,Sdate} from './AboutElement.jsx';
-import Countdown from '../CountDown/Countdown'
+
 
 
 const About = () => {
@@ -20,9 +20,8 @@ const About = () => {
                 co-sponsorship by IEEE Sri Lanka Section and all publications are available in IEEE Xplore digital library.</p>
 
         </FeatureContainer>
-        <Date>Date & Venue</Date>
-            <Sdate>JUNE01 - JUNE 03 in SRI LANKA INSTITUTE OF INFORMATION TECHNOLOGY </Sdate>
-            <Countdown/>
+        <Date>Day to be Start</Date>
+
 
         </>
     );

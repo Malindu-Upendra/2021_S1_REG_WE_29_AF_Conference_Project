@@ -6,6 +6,7 @@ import Close from '../../svg/times-solid.svg'
 import decode from "jwt-decode";
 import Navbar from "../Admin/Navbar";
 import ReviewerNavbar from '../Reviewer/ReviewerNavbar.js'
+import EditorNavBar from  '../Editor/Navbar.js'
 
 export  class Header extends Component{
 
@@ -74,7 +75,9 @@ export  class Header extends Component{
                     </>
                     : this.state.user==='Admin'  ? <Navbar/> :
 
-                        this.state.user==='Reviewer' ? <ReviewerNavbar/> : null}
+                        this.state.user==='Reviewer' ? <ReviewerNavbar/> :
+
+                            this.state.user==='Editor' ? <EditorNavBar/> : null}
 
                     </>
 

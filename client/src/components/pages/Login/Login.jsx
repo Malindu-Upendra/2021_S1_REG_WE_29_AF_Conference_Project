@@ -46,6 +46,8 @@ const Login = () => {
                 window.location = "/admin/ListKeynotes"
             }else if(user === 'Reviewer'){
                 window.location = "/researchPaper"
+            }if(user === 'Editor'){
+                window.location = "/editor/conferencetracks"
             }
         }
     }
@@ -55,7 +57,7 @@ const Login = () => {
         <div>
             <p> </p>
 
-            {/* <div className="container"> */}
+             <div className="container">
             <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
@@ -75,7 +77,7 @@ const Login = () => {
                 <p> </p>
 
             </Form>
-            {/* </div> */}
+             </div>
             <p> </p>
 
         </div>

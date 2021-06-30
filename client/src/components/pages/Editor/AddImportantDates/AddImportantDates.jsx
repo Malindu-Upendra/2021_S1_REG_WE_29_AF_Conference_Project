@@ -34,7 +34,7 @@ export class AddImportantDates extends Component{
         axios.post('http://localhost:5000/editor/importantDatesForm',AddImportant)
             .then(response => {
                 alert('AddImportantDates data are successfully inserted')
-                window.location="/";
+                window.location.reload(false);
             })
             .catch(error => {
                 console.log(error.message);
