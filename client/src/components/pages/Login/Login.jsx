@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Label, FormGroup, Button } from 'reactstrap';
 import axios from "axios";
+import decode from "jwt-decode";
 
 
 const Login = () => {
@@ -31,14 +32,22 @@ const Login = () => {
             .then(response => {
                 if (response.data.success) {
                     sessionStorage.setItem("token",response.data.token)
-                    console.log(response.data.token);
-                    window.location.reload(false);
 
                 } else {
                     alert(response.data.message)
                 }
             })
             .catch(err => console.log(err));
+
+        if(sessionStorage.token) {
+            const user = decode(sessionStorage.token).position;
+
+            if(user === 'Admin'){
+                window.location = "/admin/ListKeynotes"
+            }else if(user === 'Reviewer'){
+                window.location = "/researchPaper"
+            }
+        }
     }
 
     return (
