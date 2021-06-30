@@ -22,7 +22,7 @@ export const SidebarData = [
     },
     {
         title: 'Keynotes',
-        path: '/admin/keynotes',
+        path: '/admin/ListKeynotes',
         cName: 'nav-text'
     }
 ]
