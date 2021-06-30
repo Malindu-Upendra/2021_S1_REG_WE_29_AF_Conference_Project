@@ -8,7 +8,11 @@ import Payment from "./pages/User/Payment/Payment";
 import ViewUploadResearchPapers from "./pages/Reviewer/ViewUploadResearchPapers";
 import ViewWorkShop from "./pages/Reviewer/ViewWorkShop";
 import Attendees from "./pages/Admin/Attendees/Attendees.jsx";
+import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks";
+import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
+import Keynotes from "./pages/Admin/Keynotes/Keynotes";
 import NavBar from "./pages/Admin/Navbar";
+import KeynoteSpeakers from "./pages/Homepage/KeynoteSpeakers";
 import ReviewerNavbar from "./pages/Reviewer/ReviewerNavbar";
 import AddConferenceTracks from "./pages/Editor/AddConferenceTracks/AddConferenceTracks";
 import AddImportantDates from "./pages/Editor/AddImportantDates/AddImportantDates";
@@ -38,7 +42,11 @@ export class Section extends Component{
                 <Route path="/researchPaper" component={ViewUploadResearchPapers} exact />
                 <Route path="/workshop" component={ViewWorkShop} exact />
                 <Route path="/admin/attendees" component={Attendees} exact />
+                <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
+                <Route path="/admin/importantdates" component={ImportantDates} exact />
+                <Route path="/admin/keynotes" component={Keynotes} exact />
                 <Route path="/admin/navbar" component={NavBar} exact />
+                <Route path="/keynoteSpeakers" component={KeynoteSpeakers} exact />
                 <Route path="/reviewer/navbar" component={ReviewerNavbar} exact />
                 <Route path="/addConferenceTracks" component={AddConferenceTracks} exact />
                 <Route path="/addImportanceDates" component={AddImportantDates} exact />
@@ -52,6 +60,7 @@ export class Section extends Component{
                 <Route path="/editor/importantdates" component={AddImportantDates} exact />
                 <Route path="/editor/createkeynotes" component={CreateKeynotes} exact />
                 {/*<Route path="/ReviewerDashboard" component={Dashboard} exact />*/}
+
             </section>
         )
     }

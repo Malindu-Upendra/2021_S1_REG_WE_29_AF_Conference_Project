@@ -22,6 +22,8 @@ export class Attendees extends Component {
             <div style={{paddingTop:'50px'}}></div>
             <div className="container">
 
+                <h2>Attendees</h2><br/>
+
                 <h2>Registered Attendees To Conference</h2><br/>
 
                 <Table style={{fontFamily: "Arial", padding: "10px"}} bordered hover size="sm">
