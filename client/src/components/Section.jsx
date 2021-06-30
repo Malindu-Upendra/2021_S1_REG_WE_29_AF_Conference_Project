@@ -17,7 +17,6 @@ import ListAllResearchPapers from "./pages/Reviewer/ListAllResearchPapers";
 import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import InsertedKeynotes from "./pages/Admin/EditorChanges/InsertedKeynotes.jsx";
-import HorizontalLoginForm from './pages/Login/AntdLogin.jsx'
 
 export class Section extends Component{
 
@@ -28,7 +27,7 @@ export class Section extends Component{
             <section>
 
                 <Route path="/" component={Homepage} exact />
-                <Route path="/login" component={HorizontalLoginForm} exact />
+                <Route path="/login" component={Login} exact />
                 <Route path="/contactUs" component={ContactUs} exact />
                 <Route path="/registrationPage" component={RegistrationPage} exact />
                 <Route path="/payment" component={Payment} exact />

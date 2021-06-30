@@ -6,8 +6,8 @@ import React from 'react'
 
 export const SidebarData = [
     {
-        title: 'Home',
-        path: '/',
+        title: 'Important Dates',
+        path: '/admin/importantDates',
         cName: 'nav-text'
     },
     {
@@ -16,8 +16,13 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Products',
-        path: '/products',
+        title: 'Conference Tracks',
+        path: '/admin/conferenceTracks',
         cName: 'nav-text'
     },
+    {
+        title: 'Keynotes',
+        path: '/admin/keynotes',
+        cName: 'nav-text'
+    }
 ]
