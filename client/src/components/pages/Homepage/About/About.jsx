@@ -1,5 +1,6 @@
 import React from 'react';
 import { FeatureContainer,Date,Sdate} from './AboutElement.jsx';
+import Countdown from '../CountDown/Countdown'
 
 
 const About = () => {
@@ -21,6 +22,7 @@ const About = () => {
         </FeatureContainer>
         <Date>Date & Venue</Date>
             <Sdate>JUNE01 - JUNE 03 in SRI LANKA INSTITUTE OF INFORMATION TECHNOLOGY </Sdate>
+            <Countdown/>
 
         </>
     );
