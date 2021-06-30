@@ -18,6 +18,7 @@ import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import InsertedKeynotes from "./pages/Admin/EditorChanges/InsertedKeynotes.jsx";
 import Keynote from "./pages/Admin/Keynotes/Keynotes.jsx";
+import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks";
 
 export class Section extends Component{
 
@@ -44,6 +45,7 @@ export class Section extends Component{
                 <Route path="/ListWorkshop/:id" component={ListAllWorkshop} exact />
                 <Route path="/admin/ListKeynotes" component={InsertedKeynotes} exact />
                 <Route path="/admin/Keynotes" component={Keynote} exact />
+                <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
                 {/*<Route path="/ReviewerDashboard" component={Dashboard} exact />*/}
             </section>
         )

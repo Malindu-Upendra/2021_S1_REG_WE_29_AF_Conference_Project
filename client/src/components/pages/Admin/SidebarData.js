@@ -17,7 +17,7 @@ export const SidebarData = [
     },
     {
         title: 'Conference Tracks',
-        path: '/admin/conferenceTracks',
+        path: '/admin/conferencetracks',
         cName: 'nav-text'
     },
     {
