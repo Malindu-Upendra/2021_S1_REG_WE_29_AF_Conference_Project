@@ -57,7 +57,7 @@ const Login = () => {
         <div>
             <p> </p>
 
-            {/* <div className="container"> */}
+             <div className="container">
             <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
@@ -77,7 +77,7 @@ const Login = () => {
                 <p> </p>
 
             </Form>
-            {/* </div> */}
+             </div>
             <p> </p>
 
         </div>
