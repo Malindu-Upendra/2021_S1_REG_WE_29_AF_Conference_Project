@@ -6,6 +6,8 @@ const ResearchPaper = require("../model/researchPaper.js");
 const UserModal = require("../model/user.js");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const TempKeynotes = require('../model/tempkeynotes.js');
+const Keynote = require('../model/keynotes.js')
 
 router.get('/conferenceDetails',async (req,res)=>{
 
@@ -63,6 +65,49 @@ router.put('/updateConference/:id',async(req,res)=>{
     }
 })
 
+router.get('/getKeynotes', async (req,res) => {
+
+    try {
+        const keynotes = await TempKeynotes.find();
+        res.send({data:keynotes,success:true})
+    }catch (e) {
+        console.log(e)
+    }
+})
+
+router.put('/approvekeynote/:id',async (req,res)=>{
+
+    const id = req.params.id;
+    console.log(id)
+
+    try{
+
+        await TempKeynotes.findByIdAndUpdate({_id:id},{ approval : 'Approved'});
+
+        res.send({success:true})
+
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/declinekeynote/:id',async (req,res)=>{
+
+    const id = req.params.id;
+    console.log(id)
+
+    try{
+
+        await TempKeynotes.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
+
+        res.send({success:true})
+
+    }catch (e) {
+        console.log(e)
+    }
+
+})
 
 const secret = 'test';
 

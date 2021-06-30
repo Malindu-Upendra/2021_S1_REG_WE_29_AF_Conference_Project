@@ -16,6 +16,11 @@ import CreateKeynotes from "./pages/Editor/CreateKeynotes/CreateKeynotes";
 import ListAllResearchPapers from "./pages/Reviewer/ListAllResearchPapers";
 import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import InsertedKeynotes from "./pages/Admin/EditorChanges/InsertedKeynotes.jsx";
+import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
+import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks";
+import Keynotes from "./pages/Admin/Keynotes/Keynotes";
+import ImportantDatesSection from "./pages/Homepage/ImportantDates";
 
 export class Section extends Component{
 
@@ -40,7 +45,11 @@ export class Section extends Component{
                 <Route path="/createKeynotes" component={CreateKeynotes} exact />
                 <Route path="/ListResearchPaper/:id" component={ListAllResearchPapers} exact />
                 <Route path="/ListWorkshop/:id" component={ListAllWorkshop} exact />
-
+                <Route path="/ListKeynotes" component={InsertedKeynotes} exact />
+                <Route path="/admin/importantDates" component={ImportantDates} exact />
+                <Route path="/admin/keynotes" component={Keynotes} exact />
+                <Route path="/admin/conferenceTracks" component={ConferenceTracks} exact />
+                <Route path="/importantDateSection" component={ImportantDatesSection} exact />
                 {/*<Route path="/ReviewerDashboard" component={Dashboard} exact />*/}
             </section>
         )

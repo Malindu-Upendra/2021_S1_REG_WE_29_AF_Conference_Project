@@ -25,6 +25,12 @@ const KeynotesSchema = Schema({
     },
     speakerImg:{
         type: String
+    },
+    cloudinaryID:{
+        type: String
+    },
+    approval:{
+        type:String
     }
 });
 
