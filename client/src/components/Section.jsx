@@ -17,8 +17,8 @@ import ListAllResearchPapers from "./pages/Reviewer/ListAllResearchPapers";
 import ListAllWorkshop from "./pages/Reviewer/ListAllWorkshop";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import InsertedKeynotes from "./pages/Admin/EditorChanges/InsertedKeynotes.jsx";
-import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
-import ImportantDatesSection from "./pages/Homepage/ImportantDates";
+//import ImportantDates from "./pages/Admin/ImportantDates/ImportantDates";
+//import ImportantDatesSection from "./pages/Homepage/ImportantDates";
 import Keynote from "./pages/Admin/Keynotes/Keynotes.jsx";
 import ConferenceTracks from "./pages/Admin/ConferenceTracks/ConferenceTracks.jsx";
 
@@ -48,6 +48,9 @@ export class Section extends Component{
                 <Route path="/admin/ListKeynotes" component={InsertedKeynotes} exact />
                 <Route path="/admin/Keynotes" component={Keynote} exact />
                 <Route path="/admin/conferencetracks" component={ConferenceTracks} exact />
+                <Route path="/editor/conferencetracks" component={AddConferenceTracks} exact />
+                <Route path="/editor/importantdates" component={AddImportantDates} exact />
+                <Route path="/editor/createkeynotes" component={CreateKeynotes} exact />
                 {/*<Route path="/ReviewerDashboard" component={Dashboard} exact />*/}
             </section>
         )
