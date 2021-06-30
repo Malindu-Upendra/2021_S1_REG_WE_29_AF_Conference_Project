@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Table } from "react-bootstrap";
 //import axios from "axios";
 
-export class RetrieveWorkShop extends Component {
+export class Keynotes extends Component {
 
 
     render() {
@@ -47,6 +47,6 @@ export class RetrieveWorkShop extends Component {
 
 }
 
-export default RetrieveWorkShop;
+export default Keynotes;
 
 

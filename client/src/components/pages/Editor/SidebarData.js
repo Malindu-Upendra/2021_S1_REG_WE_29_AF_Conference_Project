@@ -16,7 +16,7 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Create RetrieveWorkShop',
+        title: 'Create Keynotes',
         path: '/editor/createkeynotes',
         cName: 'nav-text'
     },

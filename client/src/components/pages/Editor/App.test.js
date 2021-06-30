@@ -19,7 +19,7 @@ describe('Add Important Dates are inserted', () => {
         ReactDom.render(<AddImportantDates/>,div1)
     });
 })
-describe('Create RetrieveWorkShop are inserted', () => {
+describe('Create Keynotes are inserted', () => {
     it('worked  without any issues', () => {
         const div2 =document.createElement("div2")
         ReactDom.render(<CreateKeynotes/>,div2)

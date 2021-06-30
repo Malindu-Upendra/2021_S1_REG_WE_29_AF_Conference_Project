@@ -48,6 +48,9 @@ export class ImportantDates extends Component {
                 </Table>
             </div>
 
+                    </tbody>
+                </Table>
+            </div>
             </>
 
         )
