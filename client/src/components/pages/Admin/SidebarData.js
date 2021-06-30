@@ -6,9 +6,11 @@ import React from 'react'
 
 export const SidebarData = [
     {
-
         title: 'Attendees',
         path: '/admin/attendees',
+        cName: 'nav-text'
+    },
+    {
         title: 'Important Dates',
         path: '/admin/importantDates',
         cName: 'nav-text'
@@ -18,17 +20,10 @@ export const SidebarData = [
         path: '/admin/conferencetracks',
         cName: 'nav-text'
     },
-    {
-        title: 'ImportantDates',
-        path: '/admin/importantdates',
-        title: 'Conference Tracks',
-        path: '/admin/conferencetracks',
-        cName: 'nav-text'
-    },
+
     {
         title: 'Keynotes',
         path: '/admin/keynotes',
-        path: '/admin/ListKeynotes',
         cName: 'nav-text'
     }
 ]

@@ -6,13 +6,11 @@ import {Button, Table} from "react-bootstrap";
 import axios from "axios";
 
 export class ConferenceTracks extends Component {
-
     state = {
         conferenceTracks: []
     }
 
     componentDidMount = () => {
-
         axios.get('http://localhost:5000/admin/getConferenceTracks').then(res => {
             if(res.data.success){
                 this.setState({conferenceTracks:res.data.data})
@@ -20,40 +18,32 @@ export class ConferenceTracks extends Component {
     }
 
     ApproveKeynote = (id) => {
-
         axios.put(`http://localhost:5000/admin/approveTracks/${id}`).then(res => {
                 if(res.data.success){
                     window.location.reload(false);
                 }
             }
         )
-
     }
 
     DeclineKeynote = (id) => {
-
         axios.put(`http://localhost:5000/admin/declineTracks/${id}`).then(res => {
                 if(res.data.success){
                     window.location.reload(false);
                 }
             }
         )
-
     }
 
     render() {
         return (
             <>
             <div style={{paddingTop:'50px'}}></div>
-
             <div className="container" style={{ paddingTop: '50px' }}>
-
                 <h2>Conference Tracks</h2><br/>
-
                 <Table style={{fontFamily: "Arial", padding: "10px"}} bordered hover size="sm">
                     <thead>
                     <tr style={{backgroundColor: "blue", color: 'white'}}>
-
                         <th>Conference Track</th>
                         <th>Requirement</th>
                         <th>Action</th>
@@ -116,7 +106,6 @@ export class ConferenceTracks extends Component {
                                         </Button>{' '}
                                     </>
                                     : null }
-
                             </>
                             </td>
                         </tr>
@@ -127,7 +116,6 @@ export class ConferenceTracks extends Component {
             </>
         )
     }
-
 }
 
 export default ConferenceTracks;

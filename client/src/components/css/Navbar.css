@@ -25,7 +25,6 @@
 }
 
 .nav-menu.active {
-
     left: 0;
     transition: 350ms;
 }

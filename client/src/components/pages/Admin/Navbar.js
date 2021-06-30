@@ -13,7 +13,6 @@ const handleLogout = () => {
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false)
-
     const showSidebar = () => setSidebar(!sidebar)
     return (
         <>
@@ -47,7 +46,6 @@ function Navbar() {
                         </li>
                     </ul>
                 </nav>
-
             </IconContext.Provider>
         </>
     )

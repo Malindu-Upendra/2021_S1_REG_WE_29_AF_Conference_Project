@@ -1,5 +1,5 @@
 import React from 'react';
-//import { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import ReactDom from 'react-dom';
 import Workshop from './ViewWorkShop';
 import ResearchPaper from './ViewUploadResearchPapers';
@@ -11,7 +11,6 @@ describe('ViewWorkShop', () => {
     it('worked  without any issues', () => {
         const div =document.createElement("div")
         ReactDom.render(<Workshop/>,div)
-
     });
 })
 describe('ViewResearchPaper', () => {
@@ -33,6 +32,7 @@ describe('ViewAllResearchPapersByID', () => {
 
     });
 })
+
 
 
 
