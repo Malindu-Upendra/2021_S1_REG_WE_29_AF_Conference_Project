@@ -43,7 +43,7 @@ class Keynote extends Component{
                             <ProductInfo>
                                 <ProductTitle>{keynote.title + " " + keynote.firstname + " " + keynote.lastname}</ProductTitle>
                                 <ProductDesc>{keynote.university}</ProductDesc>
-                                <ProductButton>Learn More</ProductButton>
+                                <a href={`/SpecificKeynoteSpeaker/${keynote._id}`} ><ProductButton>Learn More</ProductButton></a>
                             </ProductInfo>
                         </ProductCard>
                         )

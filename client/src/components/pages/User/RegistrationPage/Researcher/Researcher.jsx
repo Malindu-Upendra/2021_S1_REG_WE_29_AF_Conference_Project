@@ -66,19 +66,19 @@ export class Researcher extends Component{
                 <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of Research paper </h2></div>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Title of Research Paper</Form.Label>
+                        <Form.Label style={{color:'black'}}>Title of Research Paper</Form.Label>
                         <Form.Control type="text" name="title" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label style={{color:'black'}}>Email</Form.Label>
                         <Form.Control type="email" name="email" onChange={this.handleChange}/>
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Author</Form.Label>
+                        <Form.Label style={{color:'black'}}>Author</Form.Label>
                         <Form.Control type="text" name="author" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Phone Number</Form.Label>
+                        <Form.Label style={{color:'black'}}>Phone Number</Form.Label>
                         <Form.Control type="number" name="phoneNumber" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>

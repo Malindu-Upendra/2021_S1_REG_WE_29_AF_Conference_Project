@@ -3,6 +3,91 @@ const router = express.Router();
 const researchPaper = require("../model/researchPaper.js");
 const Workshop = require("../model/workshop.js");
 const nodemailer = require("nodemailer");
+const Template = require("../model/template.js");
+const cloudinary = require('../utils/cloudinary.js');
+const upload = require('../utils/multer.js');
+const mongoose = require("mongoose");
+
+
+//------------
+
+router.post('/uploadTemplate',upload.single("paper"),async (req,res) => {
+
+    try {
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path,{ public_id: req.file.originalname,resource_type: "raw" });
+        console.log(result);
+
+        let rp = new Template({
+            title: req.body.title,
+            paper: result.url,
+            cloudinaryID: result.public_id,
+        });
+        // Save user
+        await rp.save();
+        res.send({success:true})
+    } catch (err) {
+        console.log(err);
+    }
+
+})
+
+router.get('/getTemplates',async (req,res) => {
+
+    try{
+        const templates = await Template.find();
+        res.send({data:templates,success:true})
+
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+// router.delete('/deleteTemplate/:id',async (req,res) => {
+//
+//     const id = req.params.id;
+//     console.log(id)
+//
+//     try{
+//         const data = Template.findOne({_id:id})
+//
+//         await Template.findByIdAndRemove({_id:data._id});
+//
+//         await cloudinary.uploader.destroy(data.cloudinaryID);
+//
+//         res.send({success:true})
+//     }catch (e) {
+//         console.log(e)
+//     }
+//
+// })
+
+router.get('/getSpecific/:id',async (req,res) => {
+
+    try{
+        const data = await Template.find();
+        res.send({data:data,success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/get/:id',async (req,res) => {
+
+    const id = req.params.id;
+
+    try {
+        const data = await Template.findOne({_id:id});
+        res.send({data:data})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+//------------
 
 router.get('/uploadedResearchPapers',async (req,res)=>{
 

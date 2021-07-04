@@ -5,8 +5,8 @@ export const HeroContainer = styled.div`
   display: flex;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
   url(${ImgBg});
-  height: 100vh;
-  background-position: center;
+  height: auto;
+  background-position:center;
   background-size: cover;
 `;
 
@@ -30,6 +30,7 @@ export const HeroItems = styled.div`
   text-transform: uppercase;
   line-height: 1;
   font-weight: bold;
+  
 
   @media screen and (max-width: 650px) {
     width: 100%;
@@ -43,6 +44,7 @@ export const HeroH1 = styled.h1`
   margin-bottom: 1rem;
   letter-spacing: 3px;
   color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   text-outline: black 5px;
 `;
 
@@ -50,7 +52,7 @@ export const HeroP = styled.p`
   display: flex;
   font-size: clamp(2rem, 2.5vw, 3rem);
   margin-bottom: 2rem;
-  
+  margin-left: 6rem;
 `;
 
 export const HeroP1 = styled.p`

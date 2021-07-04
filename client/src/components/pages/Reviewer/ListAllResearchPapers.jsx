@@ -43,7 +43,7 @@ export class ListAllResearchPapers extends Component{
                             {this.state.paper.phoneNumber}
                             <p></p>
                             Paper: {}
-                            <img src={this.state.paper.paper} style={{width:'40%', height:'180px'}}/>
+                            <a href={this.state.paper.paper} >Click</a>
                             <p></p>
                             Approval State: {}
                             {this.state.paper.approval}

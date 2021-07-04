@@ -5,19 +5,35 @@ import React from 'react'
 
 export const SidebarData = [
     {
+        title: 'View Conference Tracks',
+        path: '/editor/getConferenceTracks',
+        cName: 'nav-text'
+    },
+    {
+        title: 'View Keynotes',
+        path: '/editor/getKeynotes',
+        cName: 'nav-text'
+    },
+    {
+        title: 'View Important Dates',
+        path: '/editor/getImportantDates',
+        cName: 'nav-text'
+    },
+    {
         title: 'Add Conference Tracks',
-        path: '/editor/conferencetracks',
+        path: '/editor/conferenceTracks',
         cName: 'nav-text'
     },
     {
         title: 'Add Important Dates',
-        path: '/editor/importantdates',
+        path: '/editor/importantDates',
         cName: 'nav-text'
     },
     {
         title: 'Create RetrieveWorkShop',
-        path: '/editor/createkeynotes',
+        path: '/editor/createKeynotes',
         cName: 'nav-text'
     },
+
 
 ]

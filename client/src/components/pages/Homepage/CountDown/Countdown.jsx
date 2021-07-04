@@ -39,7 +39,7 @@ function Countdown() {
     });
 
     return (
-        <div className="App" style={{paddingBottom: '40px'}}>
+        <div className="App" style={{paddingBottom: '40px',paddingTop:'30px'}}>
             <Clock
                 timerDays={timerDays}
                 timerHours={timerHours}

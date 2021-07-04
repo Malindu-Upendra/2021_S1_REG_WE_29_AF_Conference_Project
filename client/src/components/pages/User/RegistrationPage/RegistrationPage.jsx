@@ -22,7 +22,7 @@ class RegistrationPage extends Component{
 
     render() {
         return (
-            <div className="container" style={{marginTop:'50px' , marginBottom:'50px'}}>
+            <div className="container" style={{marginTop:'50px' ,color:'black', marginBottom:'50px'}}>
                 <h2 style={{backgroundColor:'#ff944d' , borderRadius:'5px', padding:'2px'}}>Please Select Your Category</h2>
             <div className="radio-buttons">
                 Normal Attendee {}

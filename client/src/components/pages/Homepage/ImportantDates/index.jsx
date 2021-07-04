@@ -1,50 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react'
 import {
-    ProductsContainer,
-    ProductWrapper,
-    ProductsHeading,
-} from './ImportantDatesElements';
-import { Card } from 'react-bootstrap';
+    Container,
+    Wrapper,
+    Heading,
+    Title,
+    Card,
+    Icon,
+    Information,
 
-const ImportantDates = ({ heading, data }) => {
-        return (
-            <ProductsContainer>
-                <ProductsHeading>{heading}</ProductsHeading>
-                <ProductWrapper>
-                    <Card style={{width: '18rem', padding: '1rem', marginRight: '5rem', backgroundColor: 'blue'}}>
-                        <Card.Img variant="top" src="holder.js/100px180"/>
-                        <Card.Body>
-                            <Card.Title>15.05.2020</Card.Title>
-                            <br/>
-                            <Card.Text>
-                                Open submission for Application Framework
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{width: '18rem', padding: '1rem', backgroundColor: 'red'}}>
-                        <Card.Img variant="top" src="holder.js/100px180"/>
-                        <Card.Body>
-                            <Card.Title>15.05.2020</Card.Title>
-                            <br/>
-                            <Card.Text>
-                                Open submission for Application Framework
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{width: '18rem', padding: '1rem', marginLeft: '5rem', backgroundColor: 'green'}}>
-                        <Card.Img variant="top" src="holder.js/100px180"/>
-                        <Card.Body>
-                            <Card.Title>15.05.2020</Card.Title>
-                            <br/>
-                            <Card.Text>
-                                Open submission for Application Framework
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </ProductWrapper>
-            </ProductsContainer>
+
+} from './ImportantDatesElements'
+import axios from "axios";
+
+export class RetrieveImportantDates extends Component{
+
+    state = {
+        data : []
+    }
+
+    componentDidMount = () =>{
+
+        axios.get('http://localhost:5000/homepage/getImportantDates').then(res => {
+            if(res.data.success){
+                this.setState({data:res.data.data})
+            }
+        })
+
+    }
+
+    render() {
+        return(
+            <Container>
+                <Heading>Important Dates</Heading>
+                <Wrapper>
+                    {this.state.data.map((product, index) => {
+                        return (
+                            <Card key={index}>
+                                <Information>
+                                    <Icon>
+                                        <i style={{fontSize:'50px'}} className="fas fa-calendar-week"></i>
+                                    </Icon>
+                                    <Title> {product.dates + " " +product.description}</Title>
+
+                                </Information>
+                            </Card>
+                        );
+                    })}
+                </Wrapper>
+            </Container>
         );
+    }
 };
 
 
-export default ImportantDates;
+export default RetrieveImportantDates;

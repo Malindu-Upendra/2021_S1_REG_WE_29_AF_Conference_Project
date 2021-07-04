@@ -44,7 +44,7 @@ export class ListAllWorkshop extends Component{
                                 {this.state.paper.email}
                                 <p></p>
                                 flyer: {}
-                                <img src={this.state.paper.flyer} style={{width:'40%', height:'180px'}}/>
+                                <a href={this.state.paper.flyer} >Click</a>
                                 <p></p>
                                 Approval State: {}
                                 {this.state.paper.approval}

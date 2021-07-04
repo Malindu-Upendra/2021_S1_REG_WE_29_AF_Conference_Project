@@ -66,19 +66,19 @@ export class WConductor extends Component{
                 <div style={{textAlign:'center' , backgroundColor:'#80d4ff'}}><h2 style={{borderRadius:'5px', padding:'2px'}}>Details of Workshop Conductor/s </h2></div>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Title of WorkShop</Form.Label>
+                        <Form.Label style={{color:'black'}}>Title of WorkShop</Form.Label>
                         <Form.Control type="text" name="title" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label style={{color:'black'}}>Description</Form.Label>
                         <Form.Control as="textarea" name="description" rows={5} onChange={this.handleChange}/>
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>WorkShop Conductors</Form.Label>
+                        <Form.Label style={{color:'black'}}>WorkShop Conductors</Form.Label>
                         <Form.Control type="text" name="wconductors" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label style={{color:'black'}}>Email</Form.Label>
                         <Form.Control type="email" name="email" onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>

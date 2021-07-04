@@ -4,8 +4,9 @@ export const ProductsContainer = styled.div`
   /* width: 100vw; */
   min-height: 100vh;
   padding: 5rem calc((100vw - 1300px) / 2);
-  background-image: linear-gradient(#2952a3, #000000);
-  color: #fff;
+  //background-image: linear-gradient(#2952a3, #000000);
+  color: black;
+  font-weight: bold;
 `;
 
 export const ProductWrapper = styled.div`
@@ -32,12 +33,14 @@ export const ProductsHeading = styled.h1`
   font-size: clamp(2rem, 2.5vw, 3rem);
   text-align: center;
   margin-bottom: 5rem;
+  color:black;
+  font-weight: bold;
 `;
 
 export const ProductTitle = styled.h2`
   font-weight: 400;
   font-size: 1.5rem;
-  color: #fff;
+  color: black;
   
 `;
 
@@ -64,7 +67,8 @@ export const ProductButton = styled.button`
   padding: 1rem 4rem;
   border: none;
   background: #e31837;
-  color: #fff;
+  color: black;
+  font-weight: bold;
   transition: 0.2s ease-out;
 
   &:hover {
@@ -72,6 +76,7 @@ export const ProductButton = styled.button`
     transition: 0.2s ease-out;
     cursor: pointer;
     color: #000;
+    font-weight: bold;
   }
 `;
 

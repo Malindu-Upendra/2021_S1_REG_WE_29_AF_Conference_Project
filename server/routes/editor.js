@@ -1,5 +1,4 @@
 const express = require('express');
-const tempConferenceDetails = require("../model/tempConferenceDetails.js");
 const tempKeynotes = require("../model/tempkeynotes");
 const tempConferenceTracks = require("../model/tempConferenceTracks");
 const tempImportance = require("../model/tempImportanceDates");
@@ -8,10 +7,111 @@ const upload = require('../utils/multer.js');
 
 const router = express.Router();
 
-router.get('/',async (req,res) =>{
+router.put('/updateImportantDates',async (req,res) => {
+
+    const body = req.body;
+    console.log(body);
 
     try {
-        const conDetails = await tempConferenceDetails.find();
+
+        await tempImportance.findByIdAndUpdate({_id:body.id},{dates:body.dates,description:body.description,approval:'Not Approved'})
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/getSpecificDate/:id',async (req,res) => {
+
+    const id = req.params.id;
+
+    try{
+        const info = await tempImportance.findOne({_id:id});
+        res.send({data:info,success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/updateConferenceTracks',async(req,res) => {
+
+    const body = req.body;
+
+    try{
+        await tempConferenceTracks.findByIdAndUpdate({_id:body.id},{heading:body.heading,description:body.description,approval:'Not Approved'})
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/getSpecificConferenceTrack/:id',async (req,res)=>{
+
+    const id = req.params.id;
+
+    try{
+        const info = await tempConferenceTracks.findOne({_id:id});
+        res.send({data:info,success:true});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
+
+router.put('/updateKeynote',upload.single("image"),async (req,res) => {
+
+    try{
+        await cloudinary.uploader.destroy(req.body.cloudinaryID);
+
+        const result = await cloudinary.uploader.upload(req.file.path);
+
+        const id = req.body.id
+        const title = req.body.title
+        const firstname = req.body.firstname
+        const lastname = req.body.lastname
+        const university = req.body.university
+        const description = req.body.description
+        const speakerImg = result.url
+        const cloudinaryID = result.public_id
+        const approval = 'Not Approved'
+
+        await tempKeynotes.findByIdAndUpdate({_id:id},{
+            title:title,
+            firstname:firstname,
+            lastname:lastname,
+            university:university,
+            description:description,
+            speakerImg:speakerImg,
+            cloudinaryID:cloudinaryID,
+            approval:approval});
+
+        res.send({success:'true',message:"Successfully keynote updated"});
+    }catch (e) {
+        console.log(e);
+    }
+
+})
+
+router.get('/getSpecificKeynote/:id',async (req,res) => {
+
+    const id = req.params.id;
+
+    try{
+       const info = await tempKeynotes.findOne({_id:id});
+       res.send({data:info,success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/getConferenceTracks',async (req,res) =>{
+
+    try {
+        const conDetails = await tempConferenceTracks.find();
         res.status(200).json(conDetails);
     }catch (err) {
         res.status(404).json({message: err.message});
@@ -19,15 +119,24 @@ router.get('/',async (req,res) =>{
 
 })
 
-router.delete('/delete/:id', async (req,res) => {
-
-    const id = req.params.id;
+router.get('/getKeynotes',async (req,res) =>{
 
     try {
-        await tempConferenceDetails.findByIdAndRemove(id).exec();
-        res.send({message:'successfully deleted',success:'true'});
-    }catch (e) {
-        console.log(e);
+        const conDetails = await tempKeynotes.find();
+        res.status(200).json(conDetails);
+    }catch (err) {
+        res.status(404).json({message: err.message});
+    }
+
+})
+
+router.get('/getImportantDates',async (req,res) =>{
+
+    try {
+        const conDetails = await tempImportance.find();
+        res.status(200).json(conDetails);
+    }catch (err) {
+        res.status(404).json({message: err.message});
     }
 
 })
@@ -76,20 +185,6 @@ router.post('/importantDatesForm',async (req,res)=>{
         await tempImportantDate.save();
         res.send({success:'true',message:"Successfully important Dates form Inserted"});
     }catch (e){
-        console.log(e);
-    }
-
-})
-
-router.post('/uploadConDetails',async (req,res) => {
-    const p = req.body;
-
-    const newConDetails = new tempConferenceDetails(p);
-    try {
-        await newConDetails.save();
-
-        res.send({success:'true',message:"Successfully Inserted"});
-    }catch (e) {
         console.log(e);
     }
 

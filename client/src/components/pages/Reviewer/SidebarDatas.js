@@ -3,17 +3,21 @@ import React from 'react'
 // import * as AiIcons from "react-icons/ai";
 // import * as IoIcons from "react-icons/io";
 
-
 export const SideBarData = [
 
     {
         title: 'ResearchPapers',
-        path: '/researchPaper',
+        path: '/reviewer/researchPaper',
         cName: 'nav-text'
     },
     {
         title: 'Workshop',
-        path: '/workshop',
+        path: '/reviewer/workshop',
         cName: 'nav-text'
     },
+    {
+        title: 'Template',
+        path: '/reviewer/template',
+        cName: 'nav-text'
+    }
 ]

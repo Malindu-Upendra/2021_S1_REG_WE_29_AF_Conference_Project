@@ -4,31 +4,33 @@ import styled from 'styled-components';
 
 export const FeatureContainer = styled.div`
   height: 100vh;
-  max-height: 650px;
+  width: 100%;
+  max-height: 350px;
+  //min-height: 100vh;
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color:black;
+  //color:black;
+  //background: linear-gradient(to bottom, #000000 0%, #800000 100%);
+  background: linear-gradient(to bottom, #000000 0%, #003366 100%);
   text-align: center;
-  width: 90%;
-  margin-left: 5%;
-  
-  
   
 
   h2 {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(3rem, 5vw, 3rem);
+    //font-size: 50px;
     margin-bottom: 5rem;
-    margin-top: -20%;
+    margin-top: -15%;
+    color:white;
   }
 
   p {
     margin-bottom: -15%;
     font-size: clamp(1rem, 1vw, 2rem);
-    color: black;
+    color: white;
   }
   h3 {
     font-size: clamp(2rem, 3vw, 3rem);
@@ -36,28 +38,5 @@ export const FeatureContainer = styled.div`
 `;
 
 
-export const Date = styled.div`
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  color: black;
-  text-align: left;
-  margin-left: 42.5%;
-  margin-top: -13%;
-  margin-bottom: 3%;
-  
-  
-  
-  h3 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    float: left;
-  }
-  
-`;
 
-export const Sdate = styled.div`
-  font-size: clamp(1rem, 1.5vw, 3rem);
-  margin-bottom: 100px;
-  margin-left: 25%;
-    
-
-`;
 

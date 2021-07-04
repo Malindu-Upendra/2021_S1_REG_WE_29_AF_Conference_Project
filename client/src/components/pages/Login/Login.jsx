@@ -17,7 +17,6 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -43,11 +42,11 @@ const Login = () => {
             const user = decode(sessionStorage.token).position;
 
             if(user === 'Admin'){
-                window.location = "/admin/ListKeynotes"
+                window.location = "/admin/attendees"
             }else if(user === 'Reviewer'){
-                window.location = "/researchPaper"
-            }if(user === 'Editor'){
-                window.location = "/editor/conferencetracks"
+                window.location = "/reviewer/researchPaper"
+            }else if(user === 'Editor'){
+                window.location = "/editor/getConferenceTracks"
             }
         }
     }
@@ -61,13 +60,13 @@ const Login = () => {
             <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
-                    <Label for="uname"> <b>User Name </b></Label>
+                    <Label for="uname" style={{color:'black'}}> <b>User Name </b></Label>
                     <Input id="Uname"  name="email" placeholder="Enter Your User Name" onChange={handleChangeUserName} />
                 </FormGroup>
                 <p> </p>
 
                 <FormGroup>
-                    <Label for="pass"><b> Password </b></Label>
+                    <Label for="pass" style={{color:'black'}}><b> Password </b></Label>
                     <Input id="password" type='password' name="password" placeholder="Enter Your Password" onChange={handleChangePassword} />
                 </FormGroup>
 

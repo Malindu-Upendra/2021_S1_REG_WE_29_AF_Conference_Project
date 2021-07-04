@@ -5,6 +5,8 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from './SidebarData'
 import '../../css/Navbar.css';
 import { IconContext } from 'react-icons';
+import IconButton from "@material-ui/core/IconButton";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const handleLogout = () => {
     sessionStorage.clear();
@@ -21,6 +23,14 @@ function Navbar() {
                 <div className = "navbar">
                     <Link to = "#" className = "menu-bars">
                         <FaIcons.FaBars onClick={showSidebar}/>
+                    </Link>
+                    <Link className = "menu-bars">
+                        <h2 style={{color:'white', fontFamily:'verdana'}}>Admin</h2>
+                    </Link>
+                    <Link className = "menu-bars">
+                        <IconButton >
+                            <ExitToAppIcon onClick={handleLogout} style={{ fontSize: 40 , color: 'white' }} />
+                        </IconButton>
                     </Link>
                 </div>
                 <nav className = {sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -40,11 +50,6 @@ function Navbar() {
                                 </li>
                             )
                         })}
-                        <li className='nav-text'>
-                            <Link>
-                                <span onClick={handleLogout}>LogOut</span>
-                            </Link>
-                        </li>
                     </ul>
                 </nav>
 

@@ -1,14 +1,31 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 import '../../css/Footer.css'
+import decode from "jwt-decode";
 
 
 export class Footer extends Component {
 
+    state = {
+        user:''
+    }
+
+    componentDidMount = () => {
+
+        if(sessionStorage.token) {
+            this.setState({user:decode(sessionStorage.token).position})
+        }else {
+            this.setState({user:'user'})
+        }
+    }
+
+
     render() {
 
         return (
+            <>
 
+                { this.state.user==='user'  ?
 
             <div className='footer-container'>
 
@@ -95,9 +112,10 @@ export class Footer extends Component {
                     </div>
                 </section>
             </div>
+                    : null }
+
+            </>
         )
-
-
     }
 }
 

@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
+import {Date} from "../About/AboutElement";
 
 const Clock = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
     return (
         <Fragment>
+            <div className='headingCount'> Day to be Start</div>
             <section className="timer-container">
                 <section className="timer">
                     <div className="clock">

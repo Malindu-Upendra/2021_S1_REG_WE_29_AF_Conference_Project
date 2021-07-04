@@ -40,9 +40,12 @@ class Keynote extends Component{
                                 <ProductCard key={index}>
                                     <ProductInfo>
                                         <ProductTitle>{con.heading}</ProductTitle>
+                                        <ul>
                                         {con.description.map(des => (
-                                        <ProductDesc>{des}</ProductDesc>
+                                        // <ProductDesc>{des}</ProductDesc>
+                                            <li>{des}</li>
                                         ))}
+                                        </ul>
                                     </ProductInfo>
                                 </ProductCard>
                             )

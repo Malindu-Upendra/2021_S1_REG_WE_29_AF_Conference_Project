@@ -1,25 +1,26 @@
 const express = require('express');
-const Conference = require('../model/conference.js');
 const Attendee = require("../model/attendee.js");
 const Workshop = require("../model/workshop.js");
 const ResearchPaper = require("../model/researchPaper.js");
+const Payment = require("../model/payment.js")
 const UserModal = require("../model/user.js");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const TempKeynotes = require('../model/tempkeynotes.js');
-const Keynote = require('../model/keynotes.js')
 const TempConfereceTracks = require('../model/tempConferenceTracks.js')
+const TempImportantDates = require('../model/tempImportanceDates.js')
+const Contactus = require('../model/contactUs.js')
 
-router.get('/conferenceDetails',async (req,res)=>{
+router.get('/contactUs', async (req,res) => {
 
     try {
-        const conDetails = await Conference.find();
-        res.status(200).json(conDetails);
+        const info = await Contactus.find();
+        res.status(200).json(info);
     }catch (err) {
         res.status(404).json({message: err.message});
     }
 
-})
+});
 
 router.get('/attendees', async (req,res) => {
 
@@ -54,17 +55,16 @@ router.get('/researchpapers', async (req,res) => {
 
 });
 
-router.put('/updateConference/:id',async(req,res)=>{
-    const id =req.params.id
-    const details = req.body;
+router.get('/getPayments', async (req,res) => {
 
-    try{
-        await Conference.findByIdAndUpdate({id},{details})
-        res.json({success:true})
-    }catch (e){
-        res.status(404).json({message: e.message});
+    try {
+        const payments = await Payment.find();
+        res.status(200).json(payments);
+    }catch (err) {
+        res.status(404).json({message: err.message});
     }
-})
+
+});
 
 router.get('/getKeynotes', async (req,res) => {
 
@@ -140,6 +140,42 @@ router.put('/declineTracks/:id',async (req,res) => {
 
     try{
         await TempConfereceTracks.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.get('/getImportantDates',async (req,res) => {
+
+    try {
+        const info = await TempImportantDates.find();
+        res.send({data:info});
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/approveDate/:id',async(req,res) => {
+
+    const id = req.params.id;
+    try{
+        await TempImportantDates.findByIdAndUpdate({_id:id},{ approval : 'Approved'});
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
+
+router.put('/declineDate/:id',async(req,res) => {
+
+    const id = req.params.id;
+
+    try{
+        await TempImportantDates.findByIdAndUpdate({_id:id},{ approval : 'Declined'});
         res.send({success:true})
     }catch (e) {
         console.log(e)

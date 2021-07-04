@@ -15,7 +15,7 @@ router.post("/uploadWorkShop", upload.single("image"), async (req, res) => {
 
     try {
         // Upload image to cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload(req.file.path,{ public_id: req.file.originalname,resource_type: "raw" });
         console.log(result);
         console.log("from method = ")
 
@@ -52,7 +52,7 @@ router.post('/ContactUs',async (req,res) => {
 router.post('/uploadResearch',upload.single("paper"),async (req,res) => {
     try {
         // Upload image to cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload(req.file.path,{ public_id: req.file.originalname,resource_type: "raw" });
         console.log(result);
 
         let rp = new researchPaper({

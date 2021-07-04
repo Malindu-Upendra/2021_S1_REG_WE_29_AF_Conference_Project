@@ -14,8 +14,8 @@ const Hero = () => {
     return (
         <HeroContainer>
             <HeroContent>
-                <HeroItems>
-                    <HeroH1>ICAF</HeroH1>
+                <HeroItems >
+                    <HeroH1>ICAF 2022</HeroH1>
                     <HeroP>International Conference on Application Frameworks 2021</HeroP>
                     <HeroP1>June01 - June 03, 2022</HeroP1>
                     <HeroP2>Sri Lanka Institute of Information Technology</HeroP2>
