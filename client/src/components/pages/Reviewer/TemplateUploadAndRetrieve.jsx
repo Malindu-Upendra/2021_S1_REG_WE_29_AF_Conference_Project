@@ -22,15 +22,15 @@ class TemplateUploadAndRetrieve extends Component {
 
     }
 
-    // handleDelete = (id) => {
-    //
-    //     axios.delete(`http://localhost:5000/reviewer/deleteTemplate/${id}`).then(res => {
-    //         if(res.data.success){
-    //             alert("Successfully Deleted");
-    //             window.location.reload(false);
-    //         }
-    //     })
-    // }
+    handleDelete = (id) => {
+
+        axios.delete(`http://localhost:5000/reviewer/deleteTemplate/${id}`).then(res => {
+            if(res.data.success){
+                alert("Successfully Deleted");
+                window.location.reload(false);
+            }
+        })
+    }
 
     handleChange = (e) => {
         const {name , value} = e.target;
@@ -78,6 +78,12 @@ class TemplateUploadAndRetrieve extends Component {
                                         <td>{index + 1}</td>
                                         <td>{tracks.title}</td>
                                         <td><a href={tracks.paper}>Click To See</a></td>
+                                        <td><Button
+                                            variant="outline-danger"
+                                            style={{ width:'100px'}}
+                                            onClick={this.handleDelete.bind(this,tracks._id)}>
+                                            Delete
+                                        </Button></td>
                                     </tr>
                                 ))}
                                 </tbody>

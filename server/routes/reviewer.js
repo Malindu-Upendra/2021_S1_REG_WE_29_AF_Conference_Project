@@ -44,24 +44,24 @@ router.get('/getTemplates',async (req,res) => {
 
 })
 
-// router.delete('/deleteTemplate/:id',async (req,res) => {
-//
-//     const id = req.params.id;
-//     console.log(id)
-//
-//     try{
-//         const data = Template.findOne({_id:id})
-//
-//         await Template.findByIdAndRemove({_id:data._id});
-//
-//         await cloudinary.uploader.destroy(data.cloudinaryID);
-//
-//         res.send({success:true})
-//     }catch (e) {
-//         console.log(e)
-//     }
-//
-// })
+router.delete('/deleteTemplate/:id',async (req,res) => {
+
+    const id = req.params.id;
+    console.log(id)
+
+    try{
+        const data = await Template.findOne({_id:id}).exec()
+
+        await Template.findByIdAndRemove({_id:data._id}).exec();
+
+        await cloudinary.uploader.destroy(data.cloudinaryID);
+
+        res.send({success:true})
+    }catch (e) {
+        console.log(e)
+    }
+
+})
 
 router.get('/getSpecific/:id',async (req,res) => {
 

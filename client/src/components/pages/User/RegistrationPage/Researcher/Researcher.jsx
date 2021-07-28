@@ -84,6 +84,7 @@ export class Researcher extends Component{
                     <Form.Group>
                         <Form.File id="exampleFormControlFile1"
                                    name="paper"
+                                   style={{color:'black'}}
                             // accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                    label="Research Paper" onChange={this.handleImage}/>
                     </Form.Group>

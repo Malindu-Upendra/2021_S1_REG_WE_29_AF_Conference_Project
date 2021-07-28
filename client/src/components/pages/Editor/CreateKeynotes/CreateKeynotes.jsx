@@ -3,9 +3,7 @@ import Card from "react-bootstrap/Card";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 
-
 export class CreateKeynotes extends Component{
-
 
     constructor(props) {
         super(props);
